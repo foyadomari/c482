@@ -3,8 +3,10 @@ module foyadomari.c482 {
     requires javafx.fxml;
 
 
-    opens foyadomari.c482 to javafx.fxml;
-    exports foyadomari.c482;
+    opens foyadomari.Main to javafx.fxml;
+    exports foyadomari.Main;
     exports controller;
     opens controller to javafx.fxml;
+    exports Main;
+    opens Main to javafx.fxml;
 }
