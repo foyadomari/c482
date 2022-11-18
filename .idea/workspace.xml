@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="a788f3de-c9aa-437d-8aaf-a728b99b62c2" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/foyadomari/c482/AddPartController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/foyadomari/c482/AddProductController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/foyadomari/c482/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/foyadomari/c482/MainFormController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/foyadomari/c482/ModifyPartController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/foyadomari/c482/ModifyProductController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/foyadomari/c482/AddPart.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/foyadomari/c482/AddProduct.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/foyadomari/c482/MainForm.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/foyadomari/c482/ModifyPart.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/foyadomari/c482/ModifyProduct.fxml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2HhnImqJa35ix6d1YVV1maOkZKN" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_directory_selection": "C:/Users/felic/source/repos/c482/src/main/java/foyadomari/c482",
+    "last_opened_file_path": "C:/Users/felic/source/repos/c482/src/main/resources/foyadomari/c482"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a788f3de-c9aa-437d-8aaf-a728b99b62c2" name="Changes" comment="" />
+      <created>1668746106009</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1668746106009</updated>
+      <workItem from="1668746107296" duration="1000" />
+      <workItem from="1668791068919" duration="904000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
