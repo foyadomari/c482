@@ -4,28 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a788f3de-c9aa-437d-8aaf-a728b99b62c2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/foyadomari/c482/AddPartController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/foyadomari/c482/AddProductController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/foyadomari/c482/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/foyadomari/c482/MainFormController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/foyadomari/c482/ModifyPartController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/foyadomari/c482/ModifyProductController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/foyadomari/c482/AddPart.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/foyadomari/c482/AddProduct.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/foyadomari/c482/MainForm.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/foyadomari/c482/ModifyPart.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/foyadomari/c482/ModifyProduct.fxml" afterDir="false" />
+    <list default="true" id="a788f3de-c9aa-437d-8aaf-a728b99b62c2" name="Changes" comment="Initial commit">
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/AddPartController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/AddProductController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/ModifyPartController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/controller/ModifyProductController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/Part.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/Product.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/view/MainForm.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/foyadomari/c482/AddPartController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/foyadomari/c482/AddProductController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/foyadomari/c482/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/foyadomari/c482/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/foyadomari/c482/MainFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/MainFormController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/foyadomari/c482/ModifyPartController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/foyadomari/c482/ModifyProductController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/foyadomari/c482/AddPart.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/AddPart.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/foyadomari/c482/AddProduct.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/AddProduct.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/foyadomari/c482/MainForm.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/foyadomari/c482/ModifyPart.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/ModifyPart.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/foyadomari/c482/ModifyProduct.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/ModifyProduct.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,9 +56,30 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "last_directory_selection": "C:/Users/felic/source/repos/c482/src/main/java/foyadomari/c482",
-    "last_opened_file_path": "C:/Users/felic/source/repos/c482/src/main/resources/foyadomari/c482"
+    "last_opened_file_path": "C:/Users/felic/source/repos/c482/src/main/resources/view",
+    "settings.editor.selected.configurable": "preferences.JavaFX"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\felic\source\repos\c482\src\main\resources\foyadomari\c482" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\felic\source\repos\c482\src\main\resources\view" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="controller" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="c482" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="foyadomari.c482.Main" />
+      <module name="c482" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -69,8 +89,16 @@
       <option name="presentableId" value="Default" />
       <updated>1668746106009</updated>
       <workItem from="1668746107296" duration="1000" />
-      <workItem from="1668791068919" duration="904000" />
+      <workItem from="1668791068919" duration="7065000" />
     </task>
+    <task id="LOCAL-00001" summary="Initial commit">
+      <created>1668791996283</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1668791996283</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -86,5 +114,13 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Initial commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Initial commit" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

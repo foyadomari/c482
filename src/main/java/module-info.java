@@ -5,4 +5,6 @@ module foyadomari.c482 {
 
     opens foyadomari.c482 to javafx.fxml;
     exports foyadomari.c482;
+    exports controller;
+    opens controller to javafx.fxml;
 }
