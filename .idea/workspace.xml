@@ -5,9 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a788f3de-c9aa-437d-8aaf-a728b99b62c2" name="Changes" comment="After MVC restructuring">
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/Inventory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Part.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Part.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/view/MainForm.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/MainForm.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -60,7 +60,7 @@
   </component>
   <component name="RunManager">
     <configuration name="c482" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="foyadomari.c482.Main" />
+      <option name="MAIN_CLASS_NAME" value="Main.Main" />
       <module name="c482" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -77,7 +77,7 @@
       <updated>1668746106009</updated>
       <workItem from="1668746107296" duration="1000" />
       <workItem from="1668791068919" duration="11220000" />
-      <workItem from="1668845808884" duration="1709000" />
+      <workItem from="1668845808884" duration="6548000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1668791996283</created>

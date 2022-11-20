@@ -1,10 +1,10 @@
-module foyadomari.c482 {
+module Main {
     requires javafx.controls;
     requires javafx.fxml;
 
 
-    opens foyadomari.Main to javafx.fxml;
-    exports foyadomari.Main;
+    opens model to javafx.fxml;
+    exports model;
     exports controller;
     opens controller to javafx.fxml;
     exports Main;
