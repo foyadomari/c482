@@ -48,15 +48,15 @@
       </AnchorPane>
       <AnchorPane layoutX="554.0" layoutY="64.0" prefHeight="295.0" prefWidth="417.0" style="-fx-border-color: black; -fx-border-radius: 10;">
          <children>
-            <Button layoutX="221.0" layoutY="268.0" mnemonicParsing="false" text="Add" />
-            <Button layoutX="270.0" layoutY="268.0" mnemonicParsing="false" text="Modify" />
-            <Button layoutX="340.0" layoutY="268.0" mnemonicParsing="false" text="Delete" />
+            <Button fx:id="addProdButton" layoutX="221.0" layoutY="268.0" mnemonicParsing="false" text="Add" />
+            <Button fx:id="modifyProdButton" layoutX="270.0" layoutY="268.0" mnemonicParsing="false" text="Modify" />
+            <Button fx:id="delProdbutton" layoutX="340.0" layoutY="268.0" mnemonicParsing="false" text="Delete" />
             <Label layoutX="14.0" layoutY="24.0" text="Products">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <TextField layoutX="249.0" layoutY="20.0" promptText="Search by Product ID or Name" />
+            <TextField fx:id="prodSearchBar" layoutX="249.0" layoutY="20.0" promptText="Search by Product ID or Name" />
             <TableView layoutX="17.0" layoutY="54.0" prefHeight="200.0" prefWidth="383.0">
               <columns>
                 <TableColumn prefWidth="75.0" text="Product ID" />
@@ -67,6 +67,6 @@
             </TableView>
          </children>
       </AnchorPane>
-      <Button layoutX="919.0" layoutY="367.0" mnemonicParsing="false" text="Exit" />
+      <Button layoutX="919.0" layoutY="367.0" mnemonicParsing="false" onMouseClicked="#mainFormExitButtonClicked" text="Exit" />
    </children>
 </AnchorPane>
