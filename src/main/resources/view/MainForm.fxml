@@ -10,8 +10,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainFormController">
    <children>
       <HBox prefWidth="1000.0" AnchorPane.topAnchor="15.0">
          <children>
@@ -25,7 +24,7 @@
             </Label>
          </children>
       </HBox>
-      <AnchorPane layoutX="69.0" layoutY="63.0" prefHeight="295.0" prefWidth="417.0" style="-fx-border-color: black; -fx-border-radius: 10;">
+      <AnchorPane layoutX="51.0" layoutY="63.0" prefHeight="295.0" prefWidth="417.0" style="-fx-border-color: black; -fx-border-radius: 10;">
          <children>
             <Label layoutX="24.0" layoutY="24.0" text="Parts">
                <font>
@@ -46,7 +45,7 @@
             <Button layoutX="330.0" layoutY="269.0" mnemonicParsing="false" text="Delete" />
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="554.0" layoutY="64.0" prefHeight="295.0" prefWidth="417.0" style="-fx-border-color: black; -fx-border-radius: 10;">
+      <AnchorPane layoutX="535.0" layoutY="64.0" prefHeight="295.0" prefWidth="417.0" style="-fx-border-color: black; -fx-border-radius: 10;">
          <children>
             <Button fx:id="addProdButton" layoutX="221.0" layoutY="268.0" mnemonicParsing="false" text="Add" />
             <Button fx:id="modifyProdButton" layoutX="270.0" layoutY="268.0" mnemonicParsing="false" text="Modify" />
@@ -67,6 +66,6 @@
             </TableView>
          </children>
       </AnchorPane>
-      <Button layoutX="919.0" layoutY="367.0" mnemonicParsing="false" onMouseClicked="#mainFormExitButtonClicked" text="Exit" />
+<!--      <Button layoutX="919.0" layoutY="367.0" mnemonicParsing="false" onMouseClicked="#mainFormExitButtonClicked" text="Exit" />-->
    </children>
 </AnchorPane>
