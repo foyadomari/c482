@@ -15,12 +15,12 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <RadioButton layoutX="257.0" layoutY="53.0" mnemonicParsing="false" text="In-House">
+      <RadioButton fx:id="inHouseRadioButton" layoutX="257.0" layoutY="53.0" mnemonicParsing="false" text="In-House">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </RadioButton>
-      <RadioButton layoutX="365.0" layoutY="53.0" mnemonicParsing="false" text="Outsourced">
+      <RadioButton fx:id="outsourcedRadioButton" layoutX="365.0" layoutY="53.0" mnemonicParsing="false" text="Outsourced">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
@@ -34,12 +34,12 @@
       <Label layoutX="122.0" layoutY="300.0" text="Machine ID" />
       <Button layoutX="339.0" layoutY="333.0" mnemonicParsing="false" text="Save" />
       <Button layoutX="408.0" layoutY="333.0" mnemonicParsing="false" text="Cancel" />
-      <TextField layoutX="190.0" layoutY="137.0" />
+      <TextField fx:id="idTextField" layoutX="190.0" layoutY="137.0" />
       <TextField fx:id="addPartNameTextField" layoutX="190.0" layoutY="164.0" />
       <TextField fx:id="addPartInventoryTextField" layoutX="190.0" layoutY="196.0" />
       <TextField fx:id="addPartPriceTextField" layoutX="190.0" layoutY="226.0" />
       <TextField fx:id="addPartMinTextField" layoutX="190.0" layoutY="262.0" />
       <TextField fx:id="addPartMaxTextField" layoutX="385.0" layoutY="262.0" />
-      <TextField fx:id="machineIdOrCompName" layoutX="190.0" layoutY="296.0" />
+      <TextField fx:id="addMachineIdOrCompName" layoutX="190.0" layoutY="296.0" />
    </children>
 </AnchorPane>
