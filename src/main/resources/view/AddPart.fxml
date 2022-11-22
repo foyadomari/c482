@@ -31,8 +31,8 @@
       <Label layoutX="123.0" layoutY="266.0" text="Min" />
       <Label layoutX="348.0" layoutY="266.0" text="Max" />
       <Label layoutX="122.0" layoutY="300.0" text="Machine ID" />
-      <Button layoutX="339.0" layoutY="333.0" mnemonicParsing="false" text="Save" />
-      <Button layoutX="408.0" layoutY="333.0" mnemonicParsing="false" text="Cancel" />
+      <Button layoutX="408.0" layoutY="333.0" mnemonicParsing="false" text="Save" />
+      <Button layoutX="482.0" layoutY="333.0" mnemonicParsing="false" text="Cancel" />
       <TextField fx:id="idTextField" layoutX="190.0" layoutY="137.0" />
       <TextField fx:id="addPartNameTextField" layoutX="190.0" layoutY="164.0" />
       <TextField fx:id="addPartInventoryTextField" layoutX="190.0" layoutY="196.0" />
