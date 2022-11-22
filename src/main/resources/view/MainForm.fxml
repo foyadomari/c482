@@ -40,7 +40,7 @@
               </columns>
             </TableView>
             <TextField fx:id="partsSearchBar" layoutX="230.0" layoutY="21.0" prefHeight="25.0" prefWidth="168.0" promptText="Search by Part ID or Name" />
-            <Button layoutX="212.0" layoutY="269.0" mnemonicParsing="false" text="Add" />
+            <Button fx:id="addPartButton" layoutX="212.0" layoutY="269.0" mnemonicParsing="false" onAction="#clickAddPartButton" text="Add" />
             <Button layoutX="260.0" layoutY="269.0" mnemonicParsing="false" text="Modify" />
             <Button layoutX="330.0" layoutY="269.0" mnemonicParsing="false" text="Delete" />
          </children>
