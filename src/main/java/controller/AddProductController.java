@@ -1,5 +1,6 @@
 package controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -83,6 +84,31 @@ public class AddProductController implements Initializable {
 
     @FXML
     private Button saveBtn;
+
+    @FXML
+    void onActionAdd(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onActionCancel(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onActionRemovePart(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onActionSave(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onActionSearch(ActionEvent event) {
+
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 

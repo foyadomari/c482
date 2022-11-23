@@ -92,7 +92,7 @@
                <children>
                   <HBox alignment="CENTER_RIGHT" prefHeight="44.0" prefWidth="483.0">
                      <children>
-                        <TextField fx:id="partSearchTxt" promptText="Search by Part ID or Name">
+                        <TextField fx:id="partSearchTxt" onAction="#onActionSearch" promptText="Search by Part ID or Name">
                            <HBox.margin>
                               <Insets right="10.0" />
                            </HBox.margin>
@@ -113,7 +113,7 @@
                   </TableView>
                   <HBox alignment="CENTER_RIGHT" prefHeight="44.0" prefWidth="483.0">
                      <children>
-                        <Button fx:id="addPartBtn" mnemonicParsing="false" text="Add">
+                        <Button fx:id="addPartBtn" mnemonicParsing="false" onAction="#onActionAdd" text="Add">
                            <HBox.margin>
                               <Insets right="10.0" top="10.0" />
                            </HBox.margin>
@@ -136,7 +136,7 @@
                      <children>
                         <HBox alignment="TOP_RIGHT" prefHeight="36.0" prefWidth="483.0">
                            <children>
-                              <Button fx:id="removePartBtn" mnemonicParsing="false" text="Remove Associated Parts">
+                              <Button fx:id="removePartBtn" mnemonicParsing="false" onAction="#onActionRemovePart" text="Remove Associated Parts">
                                  <HBox.margin>
                                     <Insets right="10.0" />
                                  </HBox.margin>
@@ -148,8 +148,8 @@
                         </HBox>
                         <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="56.0">
                            <children>
-                              <Button fx:id="saveBtn" mnemonicParsing="false" text="Save" />
-                              <Button fx:id="cancelBtn" mnemonicParsing="false" text="Cancel" />
+                              <Button fx:id="saveBtn" mnemonicParsing="false" onAction="#onActionSave" text="Save" />
+                              <Button fx:id="cancelBtn" mnemonicParsing="false" onAction="#onActionCancel" text="Cancel" />
                            </children>
                            <VBox.margin>
                               <Insets right="10.0" top="10.0" />
