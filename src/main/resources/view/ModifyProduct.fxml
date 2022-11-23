@@ -45,11 +45,11 @@
                                 <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="20.0" GridPane.rowIndex="3">
                                     <children>
                                         <Label text="Min:" />
-                                        <TextField />
+                                        <TextField fx:id="prodMinTxt" />
                                         <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
                                             <children>
                                                 <Label text="Max:" />
-                                                <TextField />
+                                                <TextField fx:id="prodMaxTxt" />
                                             </children>
                                         </HBox>
                                     </children>
@@ -57,7 +57,7 @@
                                 <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
                                     <children>
                                         <Label text="ID:" />
-                                        <TextField disable="true" promptText="Auto-Generated" />
+                                        <TextField fx:id="prodIdTxt" disable="true" promptText="Auto-Generated" />
                                     </children>
                                     <GridPane.margin>
                                         <Insets />
@@ -66,13 +66,13 @@
                                 <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="1">
                                     <children>
                                         <Label text="Name:" />
-                                        <TextField />
+                                        <TextField fx:id="prodNameTxt" />
                                     </children>
                                 </HBox>
                                 <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="25.0" GridPane.rowIndex="2">
                                     <children>
                                         <Label text="Inv:" />
-                                        <TextField />
+                                        <TextField fx:id="prodInvTxt" />
                                     </children>
                                 </HBox>
                             </children>
@@ -92,19 +92,19 @@
                     <children>
                         <HBox alignment="CENTER_RIGHT" prefHeight="44.0" prefWidth="483.0">
                             <children>
-                                <TextField>
+                                <TextField fx:id="partsSearchTxt">
                                     <HBox.margin>
                                         <Insets right="10.0" />
                                     </HBox.margin>
                                 </TextField>
                             </children>
                         </HBox>
-                        <TableView prefHeight="250.0" prefWidth="200.0">
+                        <TableView fx:id="allPartsTbl" prefHeight="250.0" prefWidth="200.0">
                             <columns>
-                                <TableColumn prefWidth="75.0" text="Part ID" />
-                                <TableColumn prefWidth="165.66661834716797" text="Part Name" />
-                                <TableColumn prefWidth="97.33338928222656" text="Inventory Level" />
-                                <TableColumn prefWidth="144.0" text="Price / Cost per Unit" />
+                                <TableColumn fx:id="allPartIdCol" prefWidth="75.0" text="Part ID" />
+                                <TableColumn fx:id="allPartNameCol" prefWidth="165.66661834716797" text="Part Name" />
+                                <TableColumn fx:id="allPartInvLvlCol" prefWidth="97.33338928222656" text="Inventory Level" />
+                                <TableColumn fx:id="allPartPriceCol" prefWidth="144.0" text="Price / Cost per Unit" />
                                 <TableColumn prefWidth="165.66661834716797" text="Part Name" />
                             </columns>
                             <VBox.margin>
@@ -113,19 +113,19 @@
                         </TableView>
                         <HBox alignment="CENTER_RIGHT" prefHeight="44.0" prefWidth="483.0">
                             <children>
-                                <Button mnemonicParsing="false" text="Add">
+                                <Button fx:id="addBtn" mnemonicParsing="false" text="Add">
                                     <HBox.margin>
                                         <Insets right="10.0" top="10.0" />
                                     </HBox.margin>
                                 </Button>
                             </children>
                         </HBox>
-                        <TableView layoutX="10.0" layoutY="35.0" prefHeight="250.0" prefWidth="200.0">
+                        <TableView fx:id="associatedPartsTbl" layoutX="10.0" layoutY="35.0" prefHeight="250.0" prefWidth="200.0">
                             <columns>
-                                <TableColumn prefWidth="75.0" text="Part ID" />
-                                <TableColumn prefWidth="165.66661834716797" text="Part Name" />
-                                <TableColumn prefWidth="97.33338928222656" text="Inventory Level" />
-                                <TableColumn prefWidth="144.0" text="Price / Cost per Unit" />
+                                <TableColumn fx:id="associatedPartIdCol" prefWidth="75.0" text="Part ID" />
+                                <TableColumn fx:id="associatedPartNameCol" prefWidth="165.66661834716797" text="Part Name" />
+                                <TableColumn fx:id="associatedPartInvLvlCol" prefWidth="97.33338928222656" text="Inventory Level" />
+                                <TableColumn fx:id="asssociatedPartPriceCol" prefWidth="144.0" text="Price / Cost per Unit" />
                                 <TableColumn prefWidth="165.66661834716797" text="Part Name" />
                             </columns>
                             <VBox.margin>
@@ -136,7 +136,7 @@
                             <children>
                                 <HBox alignment="TOP_RIGHT" prefHeight="36.0" prefWidth="483.0">
                                     <children>
-                                        <Button mnemonicParsing="false" text="Remove Associated Parts">
+                                        <Button fx:id="removePartBtn" mnemonicParsing="false" text="Remove Associated Parts">
                                             <HBox.margin>
                                                 <Insets right="10.0" />
                                             </HBox.margin>
@@ -148,8 +148,8 @@
                                 </HBox>
                                 <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="56.0">
                                     <children>
-                                        <Button mnemonicParsing="false" text="Save" />
-                                        <Button mnemonicParsing="false" text="Cancel" />
+                                        <Button fx:id="saveBtn" mnemonicParsing="false" text="Save" />
+                                        <Button fx:id="cancelBtn" mnemonicParsing="false" text="Cancel" />
                                     </children>
                                     <VBox.margin>
                                         <Insets right="10.0" top="10.0" />

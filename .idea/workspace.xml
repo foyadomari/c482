@@ -9,6 +9,7 @@
       <change beforePath="$PROJECT_DIR$/src/main/resources/view/AddPart.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/AddPart.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/view/AddProduct.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/AddProduct.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/view/ModifyPart.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/ModifyPart.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/view/ModifyProduct.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/view/ModifyProduct.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +79,7 @@
       <workItem from="1668746107296" duration="1000" />
       <workItem from="1668791068919" duration="11220000" />
       <workItem from="1668845808884" duration="10182000" />
-      <workItem from="1669046422034" duration="11660000" />
+      <workItem from="1669046422034" duration="14678000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1668791996283</created>

@@ -35,7 +35,7 @@
                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                    <Label text="Inv:" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
+                    <Label fx:id="partInvLbl" text="Inv:" GridPane.halignment="RIGHT" GridPane.rowIndex="4">
                      <GridPane.margin>
                         <Insets right="5.0" />
                      </GridPane.margin>
@@ -50,12 +50,12 @@
                     </Label>
                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="2" GridPane.rowIndex="6">
                      <children>
-                          <Label text="Max:">
+                          <Label fx:id="partMaxLbl" text="Max:">
                            <HBox.margin>
                               <Insets />
                            </HBox.margin>
                         </Label>
-                          <TextField fx:id="modPartMaxTextField" prefHeight="25.0" prefWidth="179.0">
+                          <TextField fx:id="partMaxTxt" prefHeight="25.0" prefWidth="179.0">
                            <HBox.margin>
                               <Insets left="5.0" />
                            </HBox.margin>
@@ -74,47 +74,47 @@
                         <Insets />
                      </GridPane.margin>
                   </HBox>
-                    <TextField fx:id="idTextField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                    <TextField fx:id="modPartNameTextField" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                    <TextField fx:id="modPartInventoryTextField" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                    <TextField fx:id="modPartPriceTextField" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-                    <TextField fx:id="modPartMinTextField" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                    <TextField fx:id="partIdTxt" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                    <TextField fx:id="partNameTxt" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                    <TextField fx:id="partInvTxt" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                    <TextField fx:id="partPriceTxt" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                    <TextField fx:id="partMinTxt" GridPane.columnIndex="1" GridPane.rowIndex="6">
                      <GridPane.margin>
                         <Insets />
                      </GridPane.margin>
                   </TextField>
-                    <TextField fx:id="modMachineIdOrCompName" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-                    <Label text="Min:" GridPane.halignment="RIGHT" GridPane.rowIndex="6">
+                    <TextField fx:id="partMachineIdOrCompanyNameTxt" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                    <Label fx:id="partMinLbl" text="Min:" GridPane.halignment="RIGHT" GridPane.rowIndex="6">
                      <GridPane.margin>
                         <Insets right="5.0" />
                      </GridPane.margin>
                   </Label>
-                    <Label text="Name:" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
+                    <Label fx:id="partNameLbl" text="Name:" GridPane.halignment="RIGHT" GridPane.rowIndex="3">
                      <GridPane.margin>
                         <Insets right="5.0" />
                      </GridPane.margin>
                   </Label>
-                    <Label contentDisplay="TEXT_ONLY" text="ID:" textAlignment="RIGHT" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+                    <Label fx:id="partIdLbl" contentDisplay="TEXT_ONLY" text="ID:" textAlignment="RIGHT" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
                      <GridPane.margin>
                         <Insets right="5.0" />
                      </GridPane.margin>
                   </Label>
-                    <Label text="Price/Cost:" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
+                    <Label fx:id="partPriceLbl" text="Price/Cost:" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
                      <GridPane.margin>
                         <Insets right="5.0" />
                      </GridPane.margin>
                   </Label>
-                    <Label text="Machine ID:" GridPane.halignment="RIGHT" GridPane.rowIndex="7">
+                    <Label fx:id="partMachineIdOrCompanyNameLbl" text="Machine ID:" GridPane.halignment="RIGHT" GridPane.rowIndex="7">
                      <GridPane.margin>
                         <Insets right="5.0" />
                      </GridPane.margin>
                   </Label>
-                    <RadioButton fx:id="outsourcedRadioButton" alignment="CENTER_LEFT" mnemonicParsing="false" text="Outsourced" GridPane.columnIndex="2">
+                    <RadioButton fx:id="partOutsourceRadioBtn" alignment="CENTER_LEFT" mnemonicParsing="false" text="Outsourced" GridPane.columnIndex="2">
                         <font>
                             <Font name="System Bold" size="12.0" />
                         </font>
                     </RadioButton>
-                    <RadioButton fx:id="inHouseRadioButton" alignment="CENTER_LEFT" mnemonicParsing="false" text="In-House" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                    <RadioButton fx:id="partInHouseRadioBtn" alignment="CENTER_LEFT" mnemonicParsing="false" text="In-House" GridPane.columnIndex="1" GridPane.halignment="CENTER">
                         <font>
                             <Font name="System Bold" size="12.0" />
                         </font>
