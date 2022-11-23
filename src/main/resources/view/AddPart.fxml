@@ -109,7 +109,7 @@
                         <Insets right="5.0" />
                      </GridPane.margin>
                   </Label>
-                  <RadioButton fx:id="partOutsourcedRadioBtn" alignment="CENTER_LEFT" mnemonicParsing="false" text="Outsourced" GridPane.columnIndex="2">
+                  <RadioButton fx:id="partOutsourcedRadBtn" alignment="CENTER_LEFT" mnemonicParsing="false" text="Outsourced" GridPane.columnIndex="2">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
