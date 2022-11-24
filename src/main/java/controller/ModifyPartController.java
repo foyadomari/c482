@@ -87,6 +87,11 @@ public class ModifyPartController implements Initializable {
 
     }
 
+    @FXML
+    void onActionDisplayMain(ActionEvent event) {
+
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 

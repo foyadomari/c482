@@ -97,8 +97,12 @@ public class ModifyProductController implements Initializable {
     void onActionSave(ActionEvent event) {
 
     }
+
+    public void onActionDisplayMainMenu(ActionEvent actionEvent) {
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
+
 }

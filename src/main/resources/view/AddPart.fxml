@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -113,8 +114,11 @@
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="addPartTogGrp" />
+                     </toggleGroup>
                   </RadioButton>
-                  <RadioButton fx:id="partInHouseRadBtn" alignment="CENTER_LEFT" mnemonicParsing="false" onAction="#onActionInHouse" text="In-House" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                  <RadioButton fx:id="partInHouseRadBtn" alignment="CENTER_LEFT" mnemonicParsing="false" onAction="#onActionInHouse" text="In-House" toggleGroup="$addPartTogGrp" GridPane.columnIndex="1" GridPane.halignment="CENTER">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>

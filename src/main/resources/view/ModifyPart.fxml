@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -68,7 +69,7 @@
                   <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="2" GridPane.rowIndex="8">
                      <children>
                           <Button fx:id="modPartSaveButton" mnemonicParsing="false" onAction="#onActionSave" text="Save" />
-                          <Button fx:id="modPartCancelButton" mnemonicParsing="false" onAction="#onActionCancel" text="Cancel" />
+                          <Button fx:id="modPartCancelButton" mnemonicParsing="false" onAction="#onActionDisplayMain" text="Cancel" />
                      </children>
                      <GridPane.margin>
                         <Insets />
@@ -113,8 +114,11 @@
                         <font>
                             <Font name="System Bold" size="12.0" />
                         </font>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="modPartTogGrp" />
+                     </toggleGroup>
                     </RadioButton>
-                    <RadioButton fx:id="partInHouseRadioBtn" alignment="CENTER_LEFT" mnemonicParsing="false" onAction="#onActionInHouse" text="In-House" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                    <RadioButton fx:id="partInHouseRadioBtn" alignment="CENTER_LEFT" mnemonicParsing="false" onAction="#onActionInHouse" text="In-House" toggleGroup="$modPartTogGrp" GridPane.columnIndex="1" GridPane.halignment="CENTER">
                         <font>
                             <Font name="System Bold" size="12.0" />
                         </font>
