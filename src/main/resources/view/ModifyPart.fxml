@@ -69,7 +69,7 @@
                   <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="2" GridPane.rowIndex="8">
                      <children>
                           <Button fx:id="modPartSaveButton" mnemonicParsing="false" onAction="#onActionSave" text="Save" />
-                          <Button fx:id="modPartCancelButton" mnemonicParsing="false" onAction="#onActionDisplayMain" text="Cancel" />
+                          <Button fx:id="modPartCancelButton" mnemonicParsing="false" onAction="#onActionDisplayMainMenu" text="Cancel" />
                      </children>
                      <GridPane.margin>
                         <Insets />
