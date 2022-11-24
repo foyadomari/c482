@@ -13,11 +13,19 @@ public class Inventory {
      * @param newPart
      */
     public static void addPart(Part newPart){
-
+        allParts.add(newPart);
     }
 
     public static void addProduct(Product newProduct){
+        allProducts.add(newProduct);
+    }
 
+    public static ObservableList<Part> getAllParts(){
+        return allParts;
+    }
+
+    public static ObservableList<Product> getAllProducts(){
+        return allProducts;
     }
 
 }
