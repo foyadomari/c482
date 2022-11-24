@@ -22,7 +22,7 @@ public class MainFormController implements Initializable {
     @FXML
     void OnActionExitMain(ActionEvent event) {
 
-        System.out.println("Exit Button clicked");
+        System.exit(0);
 
     }
 
