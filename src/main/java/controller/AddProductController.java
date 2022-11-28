@@ -6,17 +6,22 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
+import model.Part;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 public class AddProductController implements Initializable {
 
     Stage stage;
     Parent scene;
+
+    public TableView<Part> myParts;
 
     @FXML
     private Button addPartBtn;
@@ -123,6 +128,7 @@ public class AddProductController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
 
     }
 }
