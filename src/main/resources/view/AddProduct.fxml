@@ -120,12 +120,12 @@
                         </Button>
                      </children>
                   </HBox>
-                  <TableView fx:id="associatedPartTabl" layoutX="10.0" layoutY="35.0" prefHeight="250.0" prefWidth="200.0">
+                  <TableView fx:id="delPartTabl" layoutX="10.0" layoutY="35.0" prefHeight="250.0" prefWidth="200.0">
                      <columns>
-                        <TableColumn fx:id="associatedPartIdCol" prefWidth="75.0" text="Part ID" />
-                        <TableColumn fx:id="associatedPartNameCol" prefWidth="165.66661834716797" text="Part Name" />
-                        <TableColumn fx:id="associatedPartInvLvlCol" prefWidth="97.33338928222656" text="Inventory Level" />
-                        <TableColumn fx:id="associatedPartPriceCol" prefWidth="144.0" text="Price / Cost per Unit" />
+                        <TableColumn fx:id="delPartIdCol" prefWidth="75.0" text="Part ID" />
+                        <TableColumn fx:id="delPartNameCol" prefWidth="165.66661834716797" text="Part Name" />
+                        <TableColumn fx:id="delPartInvLvlCol" prefWidth="97.33338928222656" text="Inventory Level" />
+                        <TableColumn fx:id="delPartPriceCol" prefWidth="144.0" text="Price / Cost per Unit" />
                         <TableColumn prefWidth="165.66661834716797" text="Part Name" />
                      </columns>
                      <VBox.margin>

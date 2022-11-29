@@ -6,9 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="a788f3de-c9aa-437d-8aaf-a728b99b62c2" name="Changes" comment="After MVC restructuring">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AddProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AddProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Inventory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Inventory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AddPartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AddPartController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/MainFormController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/MainFormController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,16 +35,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_directory_selection&quot;: &quot;C:/Users/felic/source/repos/c482/src/main/java/foyadomari/c482&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/felic/source/repos/c482/src/main/resources/view&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.JavaFX&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_directory_selection": "C:/Users/felic/source/repos/c482/src/main/java/foyadomari/c482",
+    "last_opened_file_path": "C:/Users/felic/source/repos/c482/src/main/resources/view",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.JavaFX"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\felic\source\repos\c482\src\main\resources\foyadomari\c482" />
@@ -78,7 +80,7 @@
       <workItem from="1668746107296" duration="1000" />
       <workItem from="1668791068919" duration="11220000" />
       <workItem from="1668845808884" duration="10182000" />
-      <workItem from="1669046422034" duration="34678000" />
+      <workItem from="1669046422034" duration="44322000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1668791996283</created>

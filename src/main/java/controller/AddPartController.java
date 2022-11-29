@@ -11,6 +11,11 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.fxml.FXML;
 import javafx.stage.Stage;
+import model.InHouse;
+import model.Inventory;
+import model.Outsourced;
+import model.Part;
+
 
 import java.io.IOException;
 import java.net.URL;
@@ -20,12 +25,6 @@ public class AddPartController implements Initializable {
 
     Stage stage;
     Parent scene;
-
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
 
     @FXML
     private Button cancelBtn;
@@ -87,22 +86,41 @@ public class AddPartController implements Initializable {
         scene = FXMLLoader.load(getClass().getResource("/view/MainForm.fxml"));
         stage.setScene(new Scene(scene));
         stage.show();
-
     }
-
     @FXML
     void onActionInHouse(ActionEvent event) {
-
+        partMachineIdOrCompanyNameLbl.setText("Machine ID");
     }
-
     @FXML
     void onActionOutsourced(ActionEvent event) {
-
+        partMachineIdOrCompanyNameLbl.setText("Company Name");
     }
-
     @FXML
-    void onActionSave(ActionEvent event) {
+    void onActionSave(ActionEvent event) throws IOException {
 
+        int id = Integer.parseInt(partIdTxt.getText());
+        String name = partNameTxt.getText();
+        double price = Double.parseDouble(partPriceTxt.getText());
+        int stock = Integer.parseInt(partInvTxt.getText());
+        int min = Integer.parseInt(partMinTxt.getText());
+        int max = Integer.parseInt(partMaxTxt.getText());
+
+        int machineId;
+        String companyName;
+
+        if (partInHouseRadBtn.isSelected()) {
+            machineId = Integer.parseInt(partMachineOrCompanyNameTxt.getText());
+            Inventory.addPart(new InHouse(id, name, price, stock, min, max, machineId));
+        }
+        else {
+            companyName = partMachineOrCompanyNameTxt.getText();
+            Inventory.addPart(new Outsourced(id, name, price, stock, min, max, companyName));
+        }
+
+        stage = (Stage)((Button)event.getSource()).getScene().getWindow();
+        scene = FXMLLoader.load(getClass().getResource("/view/MainForm.fxml"));
+        stage.setScene(new Scene(scene));
+        stage.show();
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

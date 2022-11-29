@@ -6,18 +6,58 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import model.Inventory;
+import model.Part;
+import model.Product;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+
 public class MainFormController implements Initializable {
 
     Stage stage;
     Parent scene;
+
+    @FXML
+    private TableColumn<Part, Integer> allPartIdCol;
+
+    @FXML
+    private TableColumn<Part, Integer> allPartInvLvlCol;
+
+    @FXML
+    private TableColumn<Part, String> allPartNameCol;
+
+    @FXML
+    private TableColumn<Part, Double> allPartPriceCol;
+
+    @FXML
+    private TextField allPartSearchField;
+
+    @FXML
+    private TableView<Part> allPartTbl;
+
+    @FXML
+    private TableColumn<Product, Integer> allProdIDCol;
+
+    @FXML
+    private TableColumn<Product, Integer> allProdInvLvlCol;
+
+    @FXML
+    private TableColumn<Product, String> allProdNameCol;
+
+    @FXML
+    private TableColumn<Product, Double> allProdPriceCol;
+
+    @FXML
+    private TextField allProdSearchField;
+
+    @FXML
+    private TableView<Product> allProdTbl;
 
     @FXML
     void OnActionExitMain(ActionEvent event) {
@@ -84,6 +124,18 @@ public class MainFormController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        allPartTbl.setItems(Inventory.getAllParts());
+        allPartIdCol.setCellValueFactory(new PropertyValueFactory<>("id"));
+        allPartInvLvlCol.setCellValueFactory(new PropertyValueFactory<>("stock"));
+        allPartNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+        allPartPriceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
+
+        allProdTbl.setItems((Inventory.getAllProducts()));
+        allProdIDCol.setCellValueFactory(new PropertyValueFactory<>("id"));
+        allProdInvLvlCol.setCellValueFactory(new PropertyValueFactory<>("stock"));
+        allProdNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+        allProdPriceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
 
     }
 
