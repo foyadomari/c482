@@ -23,47 +23,22 @@ public class MainFormController implements Initializable {
     Stage stage;
     Parent scene;
 
-    @FXML
-    private TableColumn<Part, Integer> allPartIdCol;
-
-    @FXML
-    private TableColumn<Part, Integer> allPartInvLvlCol;
-
-    @FXML
-    private TableColumn<Part, String> allPartNameCol;
-
-    @FXML
-    private TableColumn<Part, Double> allPartPriceCol;
-
-    @FXML
-    private TextField allPartSearchField;
-
-    @FXML
-    private TableView<Part> allPartTbl;
-
-    @FXML
-    private TableColumn<Product, Integer> allProdIDCol;
-
-    @FXML
-    private TableColumn<Product, Integer> allProdInvLvlCol;
-
-    @FXML
-    private TableColumn<Product, String> allProdNameCol;
-
-    @FXML
-    private TableColumn<Product, Double> allProdPriceCol;
-
-    @FXML
-    private TextField allProdSearchField;
-
-    @FXML
-    private TableView<Product> allProdTbl;
+    @FXML private TableColumn<Part, Integer> allPartIdCol;
+    @FXML private TableColumn<Part, Integer> allPartInvLvlCol;
+    @FXML private TableColumn<Part, String> allPartNameCol;
+    @FXML private TableColumn<Part, Double> allPartPriceCol;
+    @FXML private TextField allPartSearchField;
+    @FXML private TableView<Part> allPartTbl;
+    @FXML private TableColumn<Product, Integer> allProdIDCol;
+    @FXML private TableColumn<Product, Integer> allProdInvLvlCol;
+    @FXML private TableColumn<Product, String> allProdNameCol;
+    @FXML private TableColumn<Product, Double> allProdPriceCol;
+    @FXML private TextField allProdSearchField;
+    @FXML private TableView<Product> allProdTbl;
 
     @FXML
     void OnActionExitMain(ActionEvent event) {
-
         System.exit(0);
-
     }
 
     @FXML

@@ -26,14 +26,9 @@ public class AddProductController implements Initializable {
 
     private ObservableList<Part> associatedParts = FXCollections.observableArrayList();
 
-    @FXML
-    private Button addPartBtn;
-
-    @FXML
-    private TableColumn<Part, Integer> allPartIdCol;
-
-    @FXML
-    private TableColumn<Part, Integer> allPartInvLvlCol;
+    @FXML private Button addPartBtn;
+    @FXML private TableColumn<Part, Integer> allPartIdCol;
+    @FXML private TableColumn<Part, Integer> allPartInvLvlCol;
     @FXML
     private TableColumn<Part, String> allPartNameCol;
     @FXML
@@ -78,6 +73,7 @@ public class AddProductController implements Initializable {
     private Button removePartBtn;
     @FXML
     private Button saveBtn;
+
     @FXML
     void onActionAdd(ActionEvent event) {
 

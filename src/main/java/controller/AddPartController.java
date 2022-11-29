@@ -26,59 +26,24 @@ public class AddPartController implements Initializable {
     Stage stage;
     Parent scene;
 
-    @FXML
-    private Button cancelBtn;
-
-    @FXML
-    private Label partIdLbl;
-
-    @FXML
-    private TextField partIdTxt;
-
-    @FXML
-    private RadioButton partInHouseRadBtn;
-
-    @FXML
-    private Label partInvLbl;
-
-    @FXML
-    private TextField partInvTxt;
-
-    @FXML
-    private Label partMachineIdOrCompanyNameLbl;
-
-    @FXML
-    private TextField partMachineOrCompanyNameTxt;
-
-    @FXML
-    private Label partMaxLbl;
-
-    @FXML
-    private TextField partMaxTxt;
-
-    @FXML
-    private Label partMinLbl;
-
-    @FXML
-    private TextField partMinTxt;
-
-    @FXML
-    private Label partNameLbl;
-
-    @FXML
-    private TextField partNameTxt;
-
-    @FXML
-    private RadioButton partOutsourcedRadBtn;
-
-    @FXML
-    private Label partPriceLbl;
-
-    @FXML
-    private TextField partPriceTxt;
-
-    @FXML
-    private Button saveBtn;
+    @FXML private Button cancelBtn;
+    @FXML private Label partIdLbl;
+    @FXML private TextField partIdTxt;
+    @FXML private RadioButton partInHouseRadBtn;
+    @FXML private Label partInvLbl;
+    @FXML private TextField partInvTxt;
+    @FXML private Label partMachineIdOrCompanyNameLbl;
+    @FXML private TextField partMachineOrCompanyNameTxt;
+    @FXML private Label partMaxLbl;
+    @FXML private TextField partMaxTxt;
+    @FXML private Label partMinLbl;
+    @FXML private TextField partMinTxt;
+    @FXML private Label partNameLbl;
+    @FXML private TextField partNameTxt;
+    @FXML private RadioButton partOutsourcedRadBtn;
+    @FXML private Label partPriceLbl;
+    @FXML private TextField partPriceTxt;
+    @FXML private Button saveBtn;
 
     @FXML
     void onActionDisplayMainMenu(ActionEvent event) throws IOException {

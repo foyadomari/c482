@@ -11,6 +11,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import model.Part;
 
 import java.io.IOException;
 import java.net.URL;
@@ -21,65 +22,26 @@ public class ModifyProductController implements Initializable {
     Stage stage;
     Parent scene;
 
-    @FXML
-    private Button addBtn;
-
-    @FXML
-    private TableColumn<?, ?> allPartIdCol;
-
-    @FXML
-    private TableColumn<?, ?> allPartInvLvlCol;
-
-    @FXML
-    private TableColumn<?, ?> allPartNameCol;
-
-    @FXML
-    private TableColumn<?, ?> allPartPriceCol;
-
-    @FXML
-    private TableView<?> allPartsTbl;
-
-    @FXML
-    private TableColumn<?, ?> associatedPartIdCol;
-
-    @FXML
-    private TableColumn<?, ?> associatedPartInvLvlCol;
-
-    @FXML
-    private TableColumn<?, ?> associatedPartNameCol;
-
-    @FXML
-    private TableView<?> associatedPartsTbl;
-
-    @FXML
-    private TableColumn<?, ?> asssociatedPartPriceCol;
-
-    @FXML
-    private Button cancelBtn;
-
-    @FXML
-    private TextField partsSearchTxt;
-
-    @FXML
-    private TextField prodIdTxt;
-
-    @FXML
-    private TextField prodInvTxt;
-
-    @FXML
-    private TextField prodMaxTxt;
-
-    @FXML
-    private TextField prodMinTxt;
-
-    @FXML
-    private TextField prodNameTxt;
-
-    @FXML
-    private Button removePartBtn;
-
-    @FXML
-    private Button saveBtn;
+    @FXML private Button addBtn;
+    @FXML private TableColumn<Part, Integer> allPartIdCol;
+    @FXML private TableColumn<Part, Integer> allPartInvLvlCol;
+    @FXML private TableColumn<Part, String> allPartNameCol;
+    @FXML private TableColumn<Part, Double> allPartPriceCol;
+    @FXML private TableView<Part> allPartsTbl;
+    @FXML private TableColumn<Part, Integer> delPartIdCol;
+    @FXML private TableColumn<Part, Integer> delPartInvLvlCol;
+    @FXML private TableColumn<Part, String> delPartNameCol;
+    @FXML private TableView<Part> delPartsTbl;
+    @FXML private TableColumn<Part, Double> delPartPriceCol;
+    @FXML private Button cancelBtn;
+    @FXML private TextField partsSearchTxt;
+    @FXML private TextField prodIdTxt;
+    @FXML private TextField prodInvTxt;
+    @FXML private TextField prodMaxTxt;
+    @FXML private TextField prodMinTxt;
+    @FXML private TextField prodNameTxt;
+    @FXML private Button removePartBtn;
+    @FXML private Button saveBtn;
 
     @FXML
     void onActionAddPart(ActionEvent event) {

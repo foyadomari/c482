@@ -21,59 +21,24 @@ public class ModifyPartController implements Initializable {
     Stage stage;
     Parent scene;
 
-    @FXML
-    private Button modPartCancelButton;
-
-    @FXML
-    private Button modPartSaveButton;
-
-    @FXML
-    private Label partIdLbl;
-
-    @FXML
-    private TextField partIdTxt;
-
-    @FXML
-    private RadioButton partInHouseRadioBtn;
-
-    @FXML
-    private Label partInvLbl;
-
-    @FXML
-    private TextField partInvTxt;
-
-    @FXML
-    private Label partMachineIdOrCompanyNameLbl;
-
-    @FXML
-    private TextField partMachineIdOrCompanyNameTxt;
-
-    @FXML
-    private Label partMaxLbl;
-
-    @FXML
-    private TextField partMaxTxt;
-
-    @FXML
-    private Label partMinLbl;
-
-    @FXML
-    private TextField partMinTxt;
-
-    @FXML
-    private Label partNameLbl;
-
-    @FXML
-    private TextField partNameTxt;
-
-    @FXML
-    private RadioButton partOutsourceRadioBtn;
-
-    @FXML
-    private Label partPriceLbl;
-
-    @FXML
-    private TextField partPriceTxt;
+    @FXML private Button modPartCancelButton;
+    @FXML private Button modPartSaveButton;
+    @FXML private Label partIdLbl;
+    @FXML private TextField partIdTxt;
+    @FXML private RadioButton partInHouseRadioBtn;
+    @FXML private Label partInvLbl;
+    @FXML private TextField partInvTxt;
+    @FXML private Label partMachineIdOrCompanyNameLbl;
+    @FXML private TextField partMachineIdOrCompanyNameTxt;
+    @FXML private Label partMaxLbl;
+    @FXML private TextField partMaxTxt;
+    @FXML private Label partMinLbl;
+    @FXML private TextField partMinTxt;
+    @FXML private Label partNameLbl;
+    @FXML private TextField partNameTxt;
+    @FXML private RadioButton partOutsourceRadioBtn;
+    @FXML private Label partPriceLbl;
+    @FXML private TextField partPriceTxt;
 
     @FXML
     void OnActionOutsource(ActionEvent event) {
