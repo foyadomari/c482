@@ -15,35 +15,38 @@ import model.Product;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 import static model.Inventory.getAllParts;
 
 
 public class MainFormController implements Initializable {
-    private static Part partToModify;
-    private static int selectedPart;
-    private static Product productToModify;
-    private static int selectedProduct;
+    private static Part selectedPart;
+    private static Product selectedProduct;
 
     Stage stage;
     Parent scene;
 
+    //FXML All Parts Table
     @FXML private TableView<Part> allPartTbl;
     @FXML private TableColumn<Part, Integer> allPartIdCol;
     @FXML private TableColumn<Part, Integer> allPartInvLvlCol;
     @FXML private TableColumn<Part, String> allPartNameCol;
     @FXML private TableColumn<Part, Double> allPartPriceCol;
 
+    //FXML Text Fields
     @FXML private TextField allPartSearchField;
     @FXML private TextField allProdSearchField;
 
+    //FXML All Products Table
     @FXML private TableView<Product> allProdTbl;
     @FXML private TableColumn<Product, Integer> allProdIDCol;
     @FXML private TableColumn<Product, Integer> allProdInvLvlCol;
     @FXML private TableColumn<Product, String> allProdNameCol;
     @FXML private TableColumn<Product, Double> allProdPriceCol;
 
+    //FXML Button
     @FXML private Button addPartButton;
     @FXML private Button modPartButton;
     @FXML private Button deletePartButton;
@@ -92,24 +95,45 @@ public class MainFormController implements Initializable {
 
     @FXML
     void onActionModPart(ActionEvent event) throws IOException {
+        selectedPart = allPartTbl.getSelectionModel().getSelectedItem();
 
-        System.out.println("Modify Part Button clicked");
-        stage = (Stage)((Button)event.getSource()).getScene().getWindow();
-        scene = FXMLLoader.load(getClass().getResource("/view/ModifyPart.fxml"));
-        stage.setScene(new Scene(scene));
-        stage.show();
+        if (selectedPart == null) {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "No part selected \n Try again");
+            alert.setTitle("Modify Error");
+            alert.setContentText("No part selected \nTry again");
+            alert.showAndWait();
+        } else {
+            stage = (Stage)((Button)event.getSource()).getScene().getWindow();
+            scene = FXMLLoader.load(getClass().getResource("/view/ModifyPart.fxml"));
+            stage.setScene(new Scene(scene));
+            stage.show();
+        }
 
     }
 
     @FXML
     void onActionModProd(ActionEvent event) throws IOException {
+        selectedProduct = allProdTbl.getSelectionModel().getSelectedItem();
 
-        System.out.println("Modify Product Button clicked");
-        stage = (Stage)((Button)event.getSource()).getScene().getWindow();
-        scene = FXMLLoader.load(getClass().getResource("/view/ModifyProduct.fxml"));
-        stage.setScene(new Scene(scene));
-        stage.show();
+        if(selectedProduct == null){
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setTitle("Warning Dialog");
+            alert.setContentText("ERROR: No product selected \n Try again");
+            alert.showAndWait();
+        }
+        else {
+            stage = (Stage)((Button)event.getSource()).getScene().getWindow();
+            scene = FXMLLoader.load(getClass().getResource("/view/ModifyProduct.fxml"));
+            stage.setScene(new Scene(scene));
+            stage.show();
+        }
 
+    }
+    public static Part getSelectedPart() {
+        return selectedPart;
+    }
+    public static Product getSelectedProduct() {
+        return selectedProduct;
     }
 
     @Override

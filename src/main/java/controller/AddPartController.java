@@ -5,10 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.fxml.FXML;
 import javafx.stage.Stage;
 import model.InHouse;
@@ -19,6 +16,7 @@ import model.Outsourced;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 public class AddPartController implements Initializable {
@@ -26,31 +24,43 @@ public class AddPartController implements Initializable {
     Stage stage;
     Parent scene;
 
-    @FXML private Button cancelBtn;
-    @FXML private Label partIdLbl;
+    //FXML Text Fields
     @FXML private TextField partIdTxt;
-    @FXML private RadioButton partInHouseRadBtn;
-    @FXML private Label partInvLbl;
     @FXML private TextField partInvTxt;
-    @FXML private Label partMachineIdOrCompanyNameLbl;
     @FXML private TextField partMachineOrCompanyNameTxt;
-    @FXML private Label partMaxLbl;
     @FXML private TextField partMaxTxt;
-    @FXML private Label partMinLbl;
     @FXML private TextField partMinTxt;
-    @FXML private Label partNameLbl;
     @FXML private TextField partNameTxt;
-    @FXML private RadioButton partOutsourcedRadBtn;
-    @FXML private Label partPriceLbl;
     @FXML private TextField partPriceTxt;
+
+    //FXML Button
+    @FXML private Button cancelBtn;
     @FXML private Button saveBtn;
+
+    //FXML Radio Button
+    @FXML private RadioButton partInHouseRadBtn;
+    @FXML private RadioButton partOutsourcedRadBtn;
+
+    //FXML Label
+    @FXML private Label partIdLbl;
+    @FXML private Label partInvLbl;
+    @FXML private Label partMachineIdOrCompanyNameLbl;
+    @FXML private Label partMaxLbl;
+    @FXML private Label partMinLbl;
+    @FXML private Label partNameLbl;
+    @FXML private Label partPriceLbl;
 
     @FXML
     void onActionDisplayMainMenu(ActionEvent event) throws IOException {
-        stage = (Stage)((Button)event.getSource()).getScene().getWindow();
-        scene = FXMLLoader.load(getClass().getResource("/view/MainForm.fxml"));
-        stage.setScene(new Scene(scene));
-        stage.show();
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "You will lose your changes, are you sure you want to continue?");
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if(result.isPresent() && result.get() == ButtonType.OK){
+            stage = (Stage)((Button)event.getSource()).getScene().getWindow();
+            scene = FXMLLoader.load(getClass().getResource("/view/MainForm.fxml"));
+            stage.setScene(new Scene(scene));
+            stage.show();
+        }
     }
     @FXML
     void onActionInHouse(ActionEvent event) {

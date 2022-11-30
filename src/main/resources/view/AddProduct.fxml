@@ -120,7 +120,7 @@
                         </Button>
                      </children>
                   </HBox>
-                  <TableView fx:id="associatedPartTabl" layoutX="10.0" layoutY="35.0" prefHeight="250.0" prefWidth="200.0">
+                  <TableView fx:id="associatedPartTbl" layoutX="10.0" layoutY="35.0" prefHeight="250.0" prefWidth="200.0">
                      <columns>
                         <TableColumn fx:id="associatedPartIdCol" prefWidth="75.0" text="Part ID" />
                         <TableColumn fx:id="associatedPartNameCol" prefWidth="165.66661834716797" text="Part Name" />
