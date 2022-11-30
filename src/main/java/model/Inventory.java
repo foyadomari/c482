@@ -51,8 +51,8 @@ public class Inventory {
         }
         return productFound;
     }
-    public static void updatePart(int index,Part newPart ){
-        Inventory.getAllParts().set(index,newPart);
+    public static void updatePart(int index,Part selectedPart ){
+        Inventory.getAllParts().set(index,selectedPart);
     }
     public static void updateProduct(int index, Product newProduct){
         Inventory.getAllProducts().set(index, newProduct);

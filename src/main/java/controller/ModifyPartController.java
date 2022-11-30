@@ -42,19 +42,12 @@ public class ModifyPartController implements Initializable {
 
     @FXML
     void OnActionOutsource(ActionEvent event) {
-
+        partMachineIdOrCompanyNameLbl.setText("Company Name");
     }
-
-    @FXML
-    void onActionCancel(ActionEvent event) {
-
-    }
-
     @FXML
     void onActionInHouse(ActionEvent event) {
-
+        partMachineIdOrCompanyNameLbl.setText("Machine ID");
     }
-
     @FXML
     void onActionSave(ActionEvent event) {
 

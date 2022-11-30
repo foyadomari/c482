@@ -1,5 +1,7 @@
 package controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import model.Part;
 
@@ -22,17 +25,18 @@ public class ModifyProductController implements Initializable {
     Stage stage;
     Parent scene;
 
+    private ObservableList<Part> associatedParts = FXCollections.observableArrayList();
     @FXML private Button addBtn;
     @FXML private TableColumn<Part, Integer> allPartIdCol;
     @FXML private TableColumn<Part, Integer> allPartInvLvlCol;
     @FXML private TableColumn<Part, String> allPartNameCol;
     @FXML private TableColumn<Part, Double> allPartPriceCol;
     @FXML private TableView<Part> allPartsTbl;
-    @FXML private TableColumn<Part, Integer> delPartIdCol;
-    @FXML private TableColumn<Part, Integer> delPartInvLvlCol;
-    @FXML private TableColumn<Part, String> delPartNameCol;
-    @FXML private TableView<Part> delPartsTbl;
-    @FXML private TableColumn<Part, Double> delPartPriceCol;
+    @FXML private TableColumn<Part, Integer> associatedPartIdCol;
+    @FXML private TableColumn<Part, Integer> associatedPartInvLvlCol;
+    @FXML private TableColumn<Part, String> associatedPartNameCol;
+    @FXML private TableView<Part> associatedPartsTbl;
+    @FXML private TableColumn<Part, Double> associatedPartPriceCol;
     @FXML private Button cancelBtn;
     @FXML private TextField partsSearchTxt;
     @FXML private TextField prodIdTxt;
@@ -77,6 +81,16 @@ public class ModifyProductController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        allPartsTbl.setItems(allPartsTbl.getItems());
+        allPartIdCol.setCellValueFactory(new PropertyValueFactory<>("id"));
+        allPartInvLvlCol.setCellValueFactory(new PropertyValueFactory<>("stock"));
+        allPartNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+        allPartPriceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
+
+        associatedPartIdCol.setCellValueFactory(new PropertyValueFactory<>("id"));
+        associatedPartInvLvlCol.setCellValueFactory(new PropertyValueFactory<>("stock"));
+        associatedPartNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+        associatedPartPriceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
 
     }
 

@@ -17,24 +17,39 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import static model.Inventory.getAllParts;
+
 
 public class MainFormController implements Initializable {
+    private static Part partToModify;
+    private static int selectedPart;
+    private static Product productToModify;
+    private static int selectedProduct;
 
     Stage stage;
     Parent scene;
 
+    @FXML private TableView<Part> allPartTbl;
     @FXML private TableColumn<Part, Integer> allPartIdCol;
     @FXML private TableColumn<Part, Integer> allPartInvLvlCol;
     @FXML private TableColumn<Part, String> allPartNameCol;
     @FXML private TableColumn<Part, Double> allPartPriceCol;
+
     @FXML private TextField allPartSearchField;
-    @FXML private TableView<Part> allPartTbl;
+    @FXML private TextField allProdSearchField;
+
+    @FXML private TableView<Product> allProdTbl;
     @FXML private TableColumn<Product, Integer> allProdIDCol;
     @FXML private TableColumn<Product, Integer> allProdInvLvlCol;
     @FXML private TableColumn<Product, String> allProdNameCol;
     @FXML private TableColumn<Product, Double> allProdPriceCol;
-    @FXML private TextField allProdSearchField;
-    @FXML private TableView<Product> allProdTbl;
+
+    @FXML private Button addPartButton;
+    @FXML private Button modPartButton;
+    @FXML private Button deletePartButton;
+    @FXML private Button addProdButton;
+    @FXML private Button modProdButton;
+    @FXML private Button deleteProdButton;
 
     @FXML
     void OnActionExitMain(ActionEvent event) {
@@ -100,7 +115,7 @@ public class MainFormController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        allPartTbl.setItems(Inventory.getAllParts());
+        allPartTbl.setItems(getAllParts());
         allPartIdCol.setCellValueFactory(new PropertyValueFactory<>("id"));
         allPartInvLvlCol.setCellValueFactory(new PropertyValueFactory<>("stock"));
         allPartNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));

@@ -12,6 +12,7 @@ import javafx.scene.chart.PieChart;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import model.Inventory;
 import model.Part;
 
 import java.io.IOException;
@@ -36,15 +37,15 @@ public class AddProductController implements Initializable {
     @FXML
     private TableView<Part> allPartTbl;
     @FXML
-    private TableColumn<Part, Integer> delPartIdCol;
+    private TableColumn<Part, Integer> associatedPartIdCol;
     @FXML
-    private TableColumn<Part, Integer> delPartInvLvlCol;
+    private TableColumn<Part, Integer> associatedPartInvLvlCol;
     @FXML
-    private TableColumn<Part, String> delPartNameCol;
+    private TableColumn<Part, String> associatedPartNameCol;
     @FXML
-    private TableColumn<Part, Double> delPartPriceCol;
+    private TableColumn<Part, Double> associatedPartPriceCol;
     @FXML
-    private TableView<?> delPartTabl;
+    private TableView<Part> associatedPartTabl;
     @FXML
     private Button cancelBtn;
     @FXML
@@ -77,6 +78,7 @@ public class AddProductController implements Initializable {
     @FXML
     void onActionAdd(ActionEvent event) {
 
+
     }
 
     @FXML
@@ -104,15 +106,16 @@ public class AddProductController implements Initializable {
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        allPartTbl.setItems(allPartTbl.getItems());
+        allPartTbl.setItems(Inventory.getAllParts());
         allPartIdCol.setCellValueFactory(new PropertyValueFactory<>("id"));
         allPartInvLvlCol.setCellValueFactory(new PropertyValueFactory<>("stock"));
         allPartNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
         allPartPriceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
 
-        delPartIdCol.setCellValueFactory(new PropertyValueFactory<>("id"));
-        delPartInvLvlCol.setCellValueFactory(new PropertyValueFactory<>("stock"));
-        delPartNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
-        delPartPriceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
+        associatedPartTabl.setItems(associatedParts);
+        associatedPartIdCol.setCellValueFactory(new PropertyValueFactory<>("id"));
+        associatedPartInvLvlCol.setCellValueFactory(new PropertyValueFactory<>("stock"));
+        associatedPartNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+        associatedPartPriceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
     }
 }

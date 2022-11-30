@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 import model.InHouse;
 import model.Inventory;
 import model.Outsourced;
-import model.Part;
+
 
 
 import java.io.IOException;
@@ -69,6 +69,10 @@ public class AddPartController implements Initializable {
         int stock = Integer.parseInt(partInvTxt.getText());
         int min = Integer.parseInt(partMinTxt.getText());
         int max = Integer.parseInt(partMaxTxt.getText());
+
+        if (min > max){
+
+        }
 
         int machineId;
         String companyName;

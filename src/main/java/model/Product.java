@@ -8,15 +8,10 @@ public class Product {
     private ObservableList<Part> associatedParts = FXCollections.observableArrayList();
 
     private int Id;
-
     private String name;
-
     private double price;
-
     private int stock;
-
     private int min;
-
     private int max;
 
     public Product(int id, String name, double price, int stock, int min, int max) {
@@ -51,7 +46,6 @@ public class Product {
     public void setStock(int stock) {
         this.stock = stock;
     }
-
     public int getMin() {
         return min;
     }
