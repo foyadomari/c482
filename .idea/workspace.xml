@@ -5,11 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a788f3de-c9aa-437d-8aaf-a728b99b62c2" name="Changes" comment="After MVC restructuring">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/AddPartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AddPartController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/AddProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/AddProductController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ModifyPartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ModifyPartController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ModifyProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ModifyProductController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +78,7 @@
       <workItem from="1668746107296" duration="1000" />
       <workItem from="1668791068919" duration="11220000" />
       <workItem from="1668845808884" duration="10182000" />
-      <workItem from="1669046422034" duration="69006000" />
+      <workItem from="1669046422034" duration="75609000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1668791996283</created>

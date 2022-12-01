@@ -73,13 +73,15 @@ public class AddPartController implements Initializable {
     }
 
     /**
-     * 
+     * Creates a new part with the information filled out on the form
      *
      * @param event when user clicks on the "Save" button
      * @throws IOException
      */
     @FXML
     void onActionSave(ActionEvent event) throws IOException {
+        int machineId;
+        String companyName;
         try {
 
             int id = Inventory.getUniquePartId.incrementAndGet();
@@ -89,29 +91,45 @@ public class AddPartController implements Initializable {
             int min = Integer.parseInt(partMinTxt.getText());
             int max = Integer.parseInt(partMaxTxt.getText());
 
+            // Checks to see if the Max number is greater than the Min number
             if (min > max) {
-
+                Alert alert = new Alert(Alert.AlertType.WARNING,"ERROR: Max must be greater than Min");
+                alert.showAndWait();
             }
-
-            int machineId;
-            String companyName;
-
-            if (partInHouseRadBtn.isSelected()) {
-                machineId = Integer.parseInt(partMachineOrCompanyNameTxt.getText());
-                Inventory.addPart(new InHouse(id, name, price, stock, min, max, machineId));
-            } else {
-                companyName = partMachineOrCompanyNameTxt.getText();
-                Inventory.addPart(new Outsourced(id, name, price, stock, min, max, companyName));
+            // Checks to see if the Inventory level is between the Min and the Max numbers
+            else if (stock > max || stock < min ) {
+                Alert alert = new Alert(Alert.AlertType.WARNING, "ERROR: Inventory level must be between the Min and Max");
+                alert.showAndWait();
             }
-
+            // Checks to see if the price is greater than $0.00
+            else if(price < 0.00){
+                Alert alert = new Alert(Alert.AlertType.WARNING,"ERROR: Price must be greater than $0.00");
+                alert.showAndWait();
+            }
+            // Checks to see if any of the fields are empty
+            else if (partNameTxt.getText().isEmpty() || partInvTxt.getText().isEmpty() || partMinTxt.getText().isEmpty() || partMaxTxt.getText().isEmpty() || partPriceTxt.getText().isEmpty() || partMachineOrCompanyNameTxt.getText().isEmpty()){
+                Alert alert = new Alert(Alert.AlertType.WARNING,"ERROR: One or more of the fields may be empty. Please fill out the form completely.");
+                alert.showAndWait();
+            }
+            else{
+                // Checks to see which radio button is selected and adds the new part accordingly
+                if (partInHouseRadBtn.isSelected()) {
+                    machineId = Integer.parseInt(partMachineOrCompanyNameTxt.getText());
+                    Inventory.addPart(new InHouse(id, name, price, stock, min, max, machineId));
+                }
+                else {
+                    companyName = partMachineOrCompanyNameTxt.getText();
+                    Inventory.addPart(new Outsourced(id, name, price, stock, min, max, companyName));
+                }
+            }
+            // Navigates back to the Main screen
             stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
             scene = FXMLLoader.load(getClass().getResource("/view/MainForm.fxml"));
             stage.setScene(new Scene(scene));
             stage.show();
         }
         catch (NumberFormatException e){
-            Alert alert = new Alert(Alert.AlertType.WARNING,"Please input valid values for each field");
-            alert.setTitle("Warning!");
+            Alert alert = new Alert(Alert.AlertType.WARNING,"ERROR: Please input valid values for each field");
             alert.showAndWait();
         }
     }
