@@ -1,5 +1,9 @@
 package controller;
 
+/**
+ * @author Felice Oyadomari III
+ */
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -8,21 +12,20 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.chart.PieChart;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import model.Inventory;
 import model.Part;
-import model.Product;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Date;
 import java.util.Optional;
 import java.util.ResourceBundle;
-import java.util.concurrent.atomic.AtomicInteger;
 
+/**
+ * Controller for the Add Product screen
+ */
 public class AddProductController implements Initializable {
 
     Stage stage;
@@ -59,6 +62,8 @@ public class AddProductController implements Initializable {
     @FXML private TableColumn<Part, Double> associatedPartPriceCol;
 
     /**
+     * Method for when the "Add" button is clicked
+     *
      * Adds the selected part from the top table to the associated parts list
      *
      * RUNTIME ERROR: If no part is selected, a window pops up
@@ -67,27 +72,34 @@ public class AddProductController implements Initializable {
     */
     @FXML
     void onActionAdd(ActionEvent event) {
-    Part selectedPart = allPartTbl.getSelectionModel().getSelectedItem();
+        Part selectedPart = allPartTbl.getSelectionModel().getSelectedItem();
 
-    if(selectedPart == null){
-        Alert alert = new Alert(Alert.AlertType.INFORMATION,"No part selected to add!\nTry again");
+        // Checks to see if a part is selected
+        if(selectedPart == null){
+        Alert alert = new Alert(Alert.AlertType.WARNING,"ERROR: No part selected was selected.");
         alert.setTitle("Add Part Error");
-        alert.setHeaderText("ERROR:");
         alert.showAndWait();
-    }
-    else if (associatedPartsList.contains(selectedPart)) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION, "This product is already associated with the selected part.\nTry again");
+        }
+        // Checks to see if the part is already added to the associated parts list
+        else if (associatedPartsList.contains(selectedPart)) {
+        Alert alert = new Alert(Alert.AlertType.WARNING, "ERROR: This product is already associated with the selected part.");
         alert.setTitle("Product Relation Error");
-        alert.setHeaderText("ERROR:");
         alert.showAndWait();
-    }
-    else{
+        }
+        //
+        else{
         associatedPartsList.add(selectedPart);
         associatedPartTbl.setItems(associatedPartsList);
+        }
     }
-
-    }
-
+    /**
+     * Method for when the "Cancel" button is clicked
+     *
+     * Exits the Add Part Screen and takes you back to the Main Menu
+     *
+     * @param event when user clicks on the "Cancel" button
+     * @throws IOException dismisses any IO exceptions that may occur
+     */
     @FXML
     void onActionDisplayMainMenu(ActionEvent event) throws IOException {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "You will lose your changes, are you sure you want to continue?");
@@ -102,6 +114,8 @@ public class AddProductController implements Initializable {
         }
     }
     /**
+     * Method for when the "Remove Associated Parts" button
+     *
      * Removes the selected part from the associated parts list
      *
      * RUNTIME ERROR: When no part is selected, a window pops up
@@ -111,13 +125,13 @@ public class AddProductController implements Initializable {
     @FXML
     void onActionRemovePart(ActionEvent event) {
         Part selectedPart = associatedPartTbl.getSelectionModel().getSelectedItem();
-
+        // Checks to see if a part is selected
         if (selectedPart == null) {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION, "No part selected!\nTry again");
+            Alert alert = new Alert(Alert.AlertType.WARNING, "ERROR: No part selected.");
             alert.setTitle("Remove Part Error");
-            alert.setHeaderText("ERROR:");
             alert.showAndWait();
         }
+        // Gets confirmation that the user wants to delete the selected part from the associated part list
         if (associatedPartsList.contains(selectedPart)) {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to delete this part?");
             Optional<ButtonType> response = alert.showAndWait();

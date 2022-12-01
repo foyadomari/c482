@@ -1,5 +1,9 @@
 package controller;
 
+/**
+ * @author Felice Oyadomari III
+ */
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -12,13 +16,14 @@ import model.InHouse;
 import model.Inventory;
 import model.Outsourced;
 
-
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+/**
+ * Controller for the Add Part screen and
+ */
 public class AddPartController implements Initializable {
 
     Stage stage;
@@ -41,6 +46,9 @@ public class AddPartController implements Initializable {
     @FXML private RadioButton partInHouseRadBtn;
     @FXML private RadioButton partOutsourcedRadBtn;
 
+    // FXML Toggle Group
+    @FXML private ToggleGroup addPartTogGrp;
+
     //FXML Label
     @FXML private Label partIdLbl;
     @FXML private Label partInvLbl;
@@ -50,6 +58,14 @@ public class AddPartController implements Initializable {
     @FXML private Label partNameLbl;
     @FXML private Label partPriceLbl;
 
+    /**
+     * Method for when the "Cancel" button is clicked
+     *
+     * Exits the Add Part Screen and takes you back to the Main Menu
+     *
+     * @param event when user clicks on the "Cancel" button
+     * @throws IOException dismisses any IO exceptions that may occur
+     */
     @FXML
     void onActionDisplayMainMenu(ActionEvent event) throws IOException {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "You will lose your changes, are you sure you want to continue?");
@@ -73,10 +89,16 @@ public class AddPartController implements Initializable {
     }
 
     /**
-     * Creates a new part with the information filled out on the form
+     * Method for when the save button is clicked
+     *
+     * Creates a new part with the information filled out on the form and adds it to the inventory
+     *
+     * RUNTIME ERROR: If the max is less than the min number, a pop-up window will appear
+     * RUNTIME ERROR: If the inventory level is not between the min and max numbers, a pop-up window will appear
+     * RUNTIME ERROR: If the price is a negative number, a pop-up window will appear
      *
      * @param event when user clicks on the "Save" button
-     * @throws IOException
+     * @throws IOException dismisses any IO exception that may occur
      */
     @FXML
     void onActionSave(ActionEvent event) throws IOException {
@@ -84,34 +106,29 @@ public class AddPartController implements Initializable {
         String companyName;
         try {
 
-            int id = Inventory.getUniquePartId.incrementAndGet();
-            String name = partNameTxt.getText();
-            double price = Double.parseDouble(partPriceTxt.getText());
-            int stock = Integer.parseInt(partInvTxt.getText());
-            int min = Integer.parseInt(partMinTxt.getText());
-            int max = Integer.parseInt(partMaxTxt.getText());
-
             // Checks to see if the Max number is greater than the Min number
-            if (min > max) {
-                Alert alert = new Alert(Alert.AlertType.WARNING,"ERROR: Max must be greater than Min");
+            if (Integer.parseInt(partMinTxt.getText()) > Integer.parseInt(partMaxTxt.getText())) {
+                Alert alert = new Alert(Alert.AlertType.ERROR,"ERROR: Max must be greater than Min");
                 alert.showAndWait();
             }
             // Checks to see if the Inventory level is between the Min and the Max numbers
-            else if (stock > max || stock < min ) {
+            else if ((Integer.parseInt(partInvTxt.getText()) > (Integer.parseInt(partMaxTxt.getText())) || (Integer.parseInt(partInvTxt.getText()) < (Integer.parseInt(partMinTxt.getText()))))) {
                 Alert alert = new Alert(Alert.AlertType.WARNING, "ERROR: Inventory level must be between the Min and Max");
                 alert.showAndWait();
             }
             // Checks to see if the price is greater than $0.00
-            else if(price < 0.00){
+            else if(Double.parseDouble(partPriceTxt.getText()) < 0.00){
                 Alert alert = new Alert(Alert.AlertType.WARNING,"ERROR: Price must be greater than $0.00");
                 alert.showAndWait();
             }
-            // Checks to see if any of the fields are empty
-            else if (partNameTxt.getText().isEmpty() || partInvTxt.getText().isEmpty() || partMinTxt.getText().isEmpty() || partMaxTxt.getText().isEmpty() || partPriceTxt.getText().isEmpty() || partMachineOrCompanyNameTxt.getText().isEmpty()){
-                Alert alert = new Alert(Alert.AlertType.WARNING,"ERROR: One or more of the fields may be empty. Please fill out the form completely.");
-                alert.showAndWait();
-            }
-            else{
+            else {
+                // No errors occurred, adding the new part to the inventory
+                int id = Inventory.getUniquePartId.incrementAndGet();
+                String name = partNameTxt.getText();
+                double price = Double.parseDouble(partPriceTxt.getText());
+                int stock = Integer.parseInt(partInvTxt.getText());
+                int min = Integer.parseInt(partMinTxt.getText());
+                int max = Integer.parseInt(partMaxTxt.getText());
                 // Checks to see which radio button is selected and adds the new part accordingly
                 if (partInHouseRadBtn.isSelected()) {
                     machineId = Integer.parseInt(partMachineOrCompanyNameTxt.getText());
@@ -121,20 +138,29 @@ public class AddPartController implements Initializable {
                     companyName = partMachineOrCompanyNameTxt.getText();
                     Inventory.addPart(new Outsourced(id, name, price, stock, min, max, companyName));
                 }
+                // Navigates back to the Main screen
+                stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+                scene = FXMLLoader.load(getClass().getResource("/view/MainForm.fxml"));
+                stage.setScene(new Scene(scene));
+                stage.show();
             }
-            // Navigates back to the Main screen
-            stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
-            scene = FXMLLoader.load(getClass().getResource("/view/MainForm.fxml"));
-            stage.setScene(new Scene(scene));
-            stage.show();
         }
+        // Generic error
         catch (NumberFormatException e){
             Alert alert = new Alert(Alert.AlertType.WARNING,"ERROR: Please input valid values for each field");
             alert.showAndWait();
         }
     }
+
+    /**
+     * Method to select the In-House radio button by default
+     *
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        partInHouseRadBtn.setSelected(true);
 
     }
 }
