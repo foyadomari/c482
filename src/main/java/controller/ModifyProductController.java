@@ -60,10 +60,6 @@ public class ModifyProductController implements Initializable {
     @FXML
     void onActionAddPart(ActionEvent event) {
 
-    }
-
-    @FXML
-    void onActionCancel(ActionEvent event) {
 
     }
 
@@ -85,6 +81,7 @@ public class ModifyProductController implements Initializable {
 
     public void onActionDisplayMainMenu(ActionEvent event) throws IOException{
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "You will lose your changes, are you sure you want to continue?");
+        alert.setTitle("Confirm Cancellation?");
         Optional<ButtonType> result = alert.showAndWait();
 
         if(result.isPresent() && result.get() == ButtonType.OK){

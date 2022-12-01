@@ -21,6 +21,7 @@ import java.net.URL;
 import java.util.Date;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class AddProductController implements Initializable {
 
@@ -57,14 +58,27 @@ public class AddProductController implements Initializable {
     @FXML private TableColumn<Part, String> associatedPartNameCol;
     @FXML private TableColumn<Part, Double> associatedPartPriceCol;
 
+    /**
+     * Adds the selected part from the top table to the associated parts list
+     *
+     * RUNTIME ERROR: If no part is selected, a window pops up
+     *
+     * @param event user clicks on the "Add" button
+    */
     @FXML
     void onActionAdd(ActionEvent event) {
     Part selectedPart = allPartTbl.getSelectionModel().getSelectedItem();
 
     if(selectedPart == null){
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION,"No part selected to add!\nTry again");
         alert.setTitle("Add Part Error");
-        alert.setContentText("No part selected to add!");
+        alert.setHeaderText("ERROR:");
+        alert.showAndWait();
+    }
+    else if (associatedPartsList.contains(selectedPart)) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION, "This product is already associated with the selected part.\nTry again");
+        alert.setTitle("Product Relation Error");
+        alert.setHeaderText("ERROR:");
         alert.showAndWait();
     }
     else{
@@ -77,6 +91,7 @@ public class AddProductController implements Initializable {
     @FXML
     void onActionDisplayMainMenu(ActionEvent event) throws IOException {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "You will lose your changes, are you sure you want to continue?");
+        alert.setTitle("Confirm Cancellation?");
         Optional<ButtonType> result = alert.showAndWait();
 
         if(result.isPresent() && result.get() == ButtonType.OK){
@@ -86,14 +101,45 @@ public class AddProductController implements Initializable {
             stage.show();
         }
     }
-
+    /**
+     * Removes the selected part from the associated parts list
+     *
+     * RUNTIME ERROR: When no part is selected, a window pops up
+     *
+     * @param event when the user clicks on the "Remove Associated Parts" button
+     */
     @FXML
     void onActionRemovePart(ActionEvent event) {
+        Part selectedPart = associatedPartTbl.getSelectionModel().getSelectedItem();
 
+        if (selectedPart == null) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION, "No part selected!\nTry again");
+            alert.setTitle("Remove Part Error");
+            alert.setHeaderText("ERROR:");
+            alert.showAndWait();
+        }
+        if (associatedPartsList.contains(selectedPart)) {
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to delete this part?");
+            Optional<ButtonType> response = alert.showAndWait();
+            if (response.isPresent() && response.get() == ButtonType.OK) {
+                associatedPartsList.remove(selectedPart);
+                associatedPartTbl.setItems(associatedPartsList);
+            }
+        }
     }
-
+    /**
+     * Creates a new product using the information filled out on the form
+     *
+     * @param event when a user clicks on the "Save" button
+     */
     @FXML
     void onActionSave(ActionEvent event) {
+
+        int id = Inventory.getUniqueProdId.incrementAndGet();
+        String name = prodNameTxt.getText();
+        int stock = Integer.parseInt(prodInvTxt.getText());
+        int min = Integer.parseInt(prodMinTxt.getText());
+        int max = Integer.parseInt(prodMaxTxt.getText());
 
     }
 

@@ -3,9 +3,20 @@ package model;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 public class Inventory {
     private static ObservableList<Part> allParts = FXCollections.observableArrayList();
     private static ObservableList<Product> allProducts = FXCollections.observableArrayList();
+    /**
+     * Creates new Part ID starting at 1000
+     */
+    public static AtomicInteger getUniquePartId = new AtomicInteger(1000);
+
+    /**
+     * Creates new Product ID starting at 5000
+     */
+    public static AtomicInteger getUniqueProdId = new AtomicInteger(5000);
 
     /**
      *

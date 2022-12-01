@@ -53,6 +53,7 @@ public class AddPartController implements Initializable {
     @FXML
     void onActionDisplayMainMenu(ActionEvent event) throws IOException {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "You will lose your changes, are you sure you want to continue?");
+        alert.setTitle("Confirm Cancellation?");
         Optional<ButtonType> result = alert.showAndWait();
 
         if(result.isPresent() && result.get() == ButtonType.OK){
@@ -70,36 +71,49 @@ public class AddPartController implements Initializable {
     void onActionOutsourced(ActionEvent event) {
         partMachineIdOrCompanyNameLbl.setText("Company Name");
     }
+
+    /**
+     * 
+     *
+     * @param event when user clicks on the "Save" button
+     * @throws IOException
+     */
     @FXML
     void onActionSave(ActionEvent event) throws IOException {
+        try {
 
-        int id = Integer.parseInt(partIdTxt.getText());
-        String name = partNameTxt.getText();
-        double price = Double.parseDouble(partPriceTxt.getText());
-        int stock = Integer.parseInt(partInvTxt.getText());
-        int min = Integer.parseInt(partMinTxt.getText());
-        int max = Integer.parseInt(partMaxTxt.getText());
+            int id = Inventory.getUniquePartId.incrementAndGet();
+            String name = partNameTxt.getText();
+            double price = Double.parseDouble(partPriceTxt.getText());
+            int stock = Integer.parseInt(partInvTxt.getText());
+            int min = Integer.parseInt(partMinTxt.getText());
+            int max = Integer.parseInt(partMaxTxt.getText());
 
-        if (min > max){
+            if (min > max) {
 
+            }
+
+            int machineId;
+            String companyName;
+
+            if (partInHouseRadBtn.isSelected()) {
+                machineId = Integer.parseInt(partMachineOrCompanyNameTxt.getText());
+                Inventory.addPart(new InHouse(id, name, price, stock, min, max, machineId));
+            } else {
+                companyName = partMachineOrCompanyNameTxt.getText();
+                Inventory.addPart(new Outsourced(id, name, price, stock, min, max, companyName));
+            }
+
+            stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+            scene = FXMLLoader.load(getClass().getResource("/view/MainForm.fxml"));
+            stage.setScene(new Scene(scene));
+            stage.show();
         }
-
-        int machineId;
-        String companyName;
-
-        if (partInHouseRadBtn.isSelected()) {
-            machineId = Integer.parseInt(partMachineOrCompanyNameTxt.getText());
-            Inventory.addPart(new InHouse(id, name, price, stock, min, max, machineId));
+        catch (NumberFormatException e){
+            Alert alert = new Alert(Alert.AlertType.WARNING,"Please input valid values for each field");
+            alert.setTitle("Warning!");
+            alert.showAndWait();
         }
-        else {
-            companyName = partMachineOrCompanyNameTxt.getText();
-            Inventory.addPart(new Outsourced(id, name, price, stock, min, max, companyName));
-        }
-
-        stage = (Stage)((Button)event.getSource()).getScene().getWindow();
-        scene = FXMLLoader.load(getClass().getResource("/view/MainForm.fxml"));
-        stage.setScene(new Scene(scene));
-        stage.show();
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

@@ -75,7 +75,7 @@
                         <Insets />
                      </GridPane.margin>
                   </HBox>
-                  <TextField fx:id="partIdTxt" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <TextField fx:id="partIdTxt" disable="true" promptText="Auto-Generated" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                   <TextField fx:id="partNameTxt" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                   <TextField fx:id="partInvTxt" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                   <TextField fx:id="partPriceTxt" GridPane.columnIndex="1" GridPane.rowIndex="5" />

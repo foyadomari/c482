@@ -40,13 +40,7 @@ public class ModifyPartController implements Initializable {
     @FXML private RadioButton partOutsourceRadioBtn;
 
     //FXML Label
-    @FXML private Label partIdLbl;
-    @FXML private Label partInvLbl;
     @FXML private Label partMachineIdOrCompanyNameLbl;
-    @FXML private Label partMaxLbl;
-    @FXML private Label partMinLbl;
-    @FXML private Label partNameLbl;
-    @FXML private Label partPriceLbl;
 
     private static Part selectedPart;
 
@@ -66,6 +60,7 @@ public class ModifyPartController implements Initializable {
     @FXML
     void onActionDisplayMainMenu(ActionEvent event) throws IOException {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "You will lose your changes, are you sure you want to continue?");
+        alert.setTitle("Confirm Cancellation?");
         Optional<ButtonType> result = alert.showAndWait();
 
         if(result.isPresent() && result.get() == ButtonType.OK){
