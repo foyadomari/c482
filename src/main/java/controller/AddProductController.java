@@ -17,6 +17,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import model.Inventory;
 import model.Part;
+import model.Product;
 
 import java.io.IOException;
 import java.net.URL;
@@ -31,6 +32,7 @@ public class AddProductController implements Initializable {
     Stage stage;
     Parent scene;
 
+    // List of all associated parts
     private ObservableList<Part> associatedPartsList = FXCollections.observableArrayList();
 
     //FXML Text Fields
@@ -40,12 +42,14 @@ public class AddProductController implements Initializable {
     @FXML private TextField prodInvTxt;
     @FXML private TextField prodIdTxt;
     @FXML private TextField prodMaxTxt;
+    @FXML private TextField prodPriceTxt;
 
     //FXML Button
     @FXML private Button addPartBtn;
     @FXML private Button cancelBtn;
     @FXML private Button removePartBtn;
     @FXML private Button saveBtn;
+    @FXML private Button partSearchBtn;
 
     //FXML All Parts Table
     @FXML private TableView<Part> allPartTbl;
@@ -62,9 +66,9 @@ public class AddProductController implements Initializable {
     @FXML private TableColumn<Part, Double> associatedPartPriceCol;
 
     /**
-     * Method for when the "Add" button is clicked
+     * When the "Add" button is clicked method
      *
-     * Adds the selected part from the top table to the associated parts list
+     * Adds the selected part from the top table to the bottom table (associated parts list)
      *
      * RUNTIME ERROR: If no part is selected, a window pops up
      *
@@ -86,14 +90,14 @@ public class AddProductController implements Initializable {
         alert.setTitle("Product Relation Error");
         alert.showAndWait();
         }
-        //
+        // No error occurred, adding the selected part to the associated parts list
         else{
         associatedPartsList.add(selectedPart);
         associatedPartTbl.setItems(associatedPartsList);
         }
     }
     /**
-     * Method for when the "Cancel" button is clicked
+     * When the "Cancel" button is clicked method
      *
      * Exits the Add Part Screen and takes you back to the Main Menu
      *
@@ -114,7 +118,7 @@ public class AddProductController implements Initializable {
         }
     }
     /**
-     * Method for when the "Remove Associated Parts" button
+     * When the "Remove Associated Parts" button is clicked method
      *
      * Removes the selected part from the associated parts list
      *
@@ -144,21 +148,64 @@ public class AddProductController implements Initializable {
     /**
      * Creates a new product using the information filled out on the form
      *
+     * RUNTIME ERROR: If the max is less than the min number, a pop-up window will appear
+     * RUNTIME ERROR: If the inventory level is not between the min and max numbers, a pop-up window will appear
+     * RUNTIME ERROR: If the price is a negative number, a pop-up window will appear
+     *
      * @param event when a user clicks on the "Save" button
+     * @throws IOException dismisses any IO exceptions that may occur
      */
     @FXML
-    void onActionSave(ActionEvent event) {
+    void onActionSave(ActionEvent event) throws IOException{
 
-        int id = Inventory.getUniqueProdId.incrementAndGet();
-        String name = prodNameTxt.getText();
-        int stock = Integer.parseInt(prodInvTxt.getText());
-        int min = Integer.parseInt(prodMinTxt.getText());
-        int max = Integer.parseInt(prodMaxTxt.getText());
+        try{
+            // Checks to see if the Max number is greater than the Min number
+            if (Integer.parseInt(prodMinTxt.getText()) > Integer.parseInt(prodMaxTxt.getText())) {
+                Alert alert = new Alert(Alert.AlertType.ERROR,"ERROR: Max must be greater than Min");
+                alert.showAndWait();
+            }
+            // Checks to see if the Inventory level is between the Min and the Max numbers
+            else if ((Integer.parseInt(prodInvTxt.getText()) > (Integer.parseInt(prodMaxTxt.getText())) || (Integer.parseInt(prodInvTxt.getText()) < (Integer.parseInt(prodMinTxt.getText()))))) {
+                Alert alert = new Alert(Alert.AlertType.WARNING, "ERROR: Inventory level must be between the Min and Max");
+                alert.showAndWait();
+            }
+            // Checks to see if the price is greater than $0.00
+            else if(Double.parseDouble(prodPriceTxt.getText()) < 0.00) {
+                Alert alert = new Alert(Alert.AlertType.WARNING, "ERROR: Price must be greater than $0.00");
+                alert.showAndWait();
+            }
+            else {
+                // No errors occurred, adding new product to inventory
+                int id = Inventory.getUniqueProdId.getAndIncrement();
+                String name = prodNameTxt.getText();
+                int stock = Integer.parseInt(prodInvTxt.getText());
+                int min = Integer.parseInt(prodMinTxt.getText());
+                int max = Integer.parseInt(prodMaxTxt.getText());
+                double price = Double.parseDouble(prodPriceTxt.getText());
 
+                Inventory.addProduct(new Product(id, name, price,stock, min, max));
+                // Navigates back to the Main screen
+                stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
+                scene = FXMLLoader.load(getClass().getResource("/view/MainForm.fxml"));
+                stage.setScene(new Scene(scene));
+                stage.show();
+            }
+        }
+        // Generic error
+        catch (NumberFormatException e){
+            Alert alert = new Alert(Alert.AlertType.WARNING,"ERROR: Please input valid values for each field");
+            alert.showAndWait();
+        }
     }
 
+    /**
+     *
+     * Searches the part inventory for a specific part
+     * @param event
+     */
     @FXML
     void onActionSearch(ActionEvent event) {
+        String searchField = partSearchTxt.getText();
 
     }
     @Override

@@ -59,7 +59,7 @@ public class AddPartController implements Initializable {
     @FXML private Label partPriceLbl;
 
     /**
-     * Method for when the "Cancel" button is clicked
+     * When the "Cancel" button is clicked method
      *
      * Exits the Add Part Screen and takes you back to the Main Menu
      *
@@ -89,7 +89,7 @@ public class AddPartController implements Initializable {
     }
 
     /**
-     * Method for when the save button is clicked
+     * When the "Save" button is clicked method
      *
      * Creates a new part with the information filled out on the form and adds it to the inventory
      *
@@ -123,7 +123,7 @@ public class AddPartController implements Initializable {
             }
             else {
                 // No errors occurred, adding the new part to the inventory
-                int id = Inventory.getUniquePartId.incrementAndGet();
+                int id = Inventory.getUniquePartId.getAndIncrement();
                 String name = partNameTxt.getText();
                 double price = Double.parseDouble(partPriceTxt.getText());
                 int stock = Integer.parseInt(partInvTxt.getText());
