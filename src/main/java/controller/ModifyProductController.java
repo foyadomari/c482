@@ -11,6 +11,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import model.Inventory;
 import model.Part;
 import model.Product;
 
@@ -40,6 +41,8 @@ public class ModifyProductController implements Initializable {
     @FXML private Button cancelBtn;
     @FXML private Button removePartBtn;
     @FXML private Button saveBtn;
+    @FXML private Button searchBtn;
+
 
     //FXML All Parts Table
     @FXML private TableView<Part> allPartsTbl;
@@ -63,9 +66,29 @@ public class ModifyProductController implements Initializable {
 
     }
 
+    /**
+     *
+     * Searches the part inventory for a specific part
+     * @param event when a user clicks on the search button
+     */
     @FXML
     void onActionPartSearch(ActionEvent event) {
+        String searchInput = partsSearchTxt.getText();
 
+        ObservableList<Part> allParts = Inventory.getAllParts();
+        ObservableList<Part> matchingParts = FXCollections.observableArrayList();
+
+        for (Part part: allParts){
+            if (String.valueOf(part.getId()).contains(searchInput) || String.valueOf(part.getName()).contains(searchInput)){
+                matchingParts.add(part);
+            }
+            allPartsTbl.setItems(matchingParts);
+        }
+        // If the search input doesn't match anything in the inventory
+        if (matchingParts.isEmpty()){
+            Alert alert = new Alert(Alert.AlertType.WARNING," ERROR: No matching parts found. Try again");
+            alert.showAndWait();
+        }
     }
 
     @FXML

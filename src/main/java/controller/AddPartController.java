@@ -79,6 +79,11 @@ public class AddPartController implements Initializable {
             stage.show();
         }
     }
+
+    /**
+     * 
+     * @param event
+     */
     @FXML
     void onActionInHouse(ActionEvent event) {
         partMachineIdOrCompanyNameLbl.setText("Machine ID");

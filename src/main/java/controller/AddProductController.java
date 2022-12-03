@@ -201,12 +201,26 @@ public class AddProductController implements Initializable {
     /**
      *
      * Searches the part inventory for a specific part
-     * @param event
+     * @param event when a user clicks on the search button
      */
     @FXML
     void onActionSearch(ActionEvent event) {
-        String searchField = partSearchTxt.getText();
+        String searchInput = partSearchTxt.getText();
 
+        ObservableList<Part> allParts = Inventory.getAllParts();
+        ObservableList<Part> matchingParts = FXCollections.observableArrayList();
+
+        for (Part part: allParts){
+            if (String.valueOf(part.getId()).contains(searchInput) || String.valueOf(part.getName()).contains(searchInput)){
+                matchingParts.add(part);
+            }
+        allPartTbl.setItems(matchingParts);
+        }
+        // If the search input doesn't match anything in the inventory
+        if (matchingParts.isEmpty()){
+            Alert alert = new Alert(Alert.AlertType.WARNING," ERROR: No matching parts found. Try again");
+            alert.showAndWait();
+        }
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

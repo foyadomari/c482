@@ -92,11 +92,16 @@
                     <children>
                         <HBox alignment="CENTER_RIGHT" prefHeight="44.0" prefWidth="483.0">
                             <children>
-                                <TextField fx:id="partsSearchTxt" onAction="#onActionPartSearch">
+                                <TextField fx:id="partsSearchTxt">
                                     <HBox.margin>
                                         <Insets right="10.0" />
                                     </HBox.margin>
                                 </TextField>
+                        <Button fx:id="searchBtn" mnemonicParsing="false" onAction="#onActionPartSearch" text="Search">
+                           <HBox.margin>
+                              <Insets right="10.0" />
+                           </HBox.margin>
+                        </Button>
                             </children>
                         </HBox>
                         <TableView fx:id="allPartsTbl" prefHeight="250.0" prefWidth="200.0">

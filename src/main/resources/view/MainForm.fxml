@@ -56,7 +56,7 @@
                             <RowConstraints maxHeight="91.66668701171875" minHeight="10.0" prefHeight="12.66668701171875" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.halignment="RIGHT">
+                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.halignment="RIGHT">
                                  <children>
                                     <Label text="Parts">
                                        <font>
@@ -68,12 +68,13 @@
                                     </Label>
                                     <TextField fx:id="allPartSearchField" prefHeight="25.0" prefWidth="170.0" promptText="Search by Part ID or Name">
                                        <HBox.margin>
-                                          <Insets left="270.0" />
+                                          <Insets left="205.0" />
                                        </HBox.margin>
                                     </TextField>
+                                    <Button fx:id="partSearchBtn" mnemonicParsing="false" onAction="#onActionPartSearch" text="Search" />
                                  </children>
                                  <GridPane.margin>
-                                    <Insets />
+                                    <Insets right="5.0" />
                                  </GridPane.margin>
                               </HBox>
                               <TableView fx:id="allPartTbl" prefHeight="123.0" prefWidth="458.0" GridPane.rowIndex="1">
@@ -113,7 +114,7 @@
                               <RowConstraints maxHeight="91.66668701171875" minHeight="10.0" prefHeight="12.66668701171875" vgrow="SOMETIMES" />
                            </rowConstraints>
                            <children>
-                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" GridPane.halignment="RIGHT">
+                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.halignment="RIGHT">
                                  <children>
                                     <Label prefHeight="20.0" prefWidth="98.0" text="Products">
                                        <font>
@@ -125,12 +126,13 @@
                                     </Label>
                                     <TextField fx:id="allProdSearchField" prefHeight="25.0" prefWidth="169.0" promptText="Search by Product ID or Name">
                                        <HBox.margin>
-                                          <Insets left="200.0" />
+                                          <Insets left="135.0" />
                                        </HBox.margin>
                                     </TextField>
+                                    <Button fx:id="prodSearchBtn" mnemonicParsing="false" onAction="#onActionProdSearch" text="Search" />
                                  </children>
                                  <GridPane.margin>
-                                    <Insets />
+                                    <Insets right="5.0" />
                                  </GridPane.margin>
                               </HBox>
                               <TableView fx:id="allProdTbl" prefHeight="123.0" prefWidth="458.0" GridPane.rowIndex="1">

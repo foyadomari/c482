@@ -53,6 +53,8 @@ public class MainFormController implements Initializable {
     @FXML private Button addProdButton;
     @FXML private Button modProdButton;
     @FXML private Button deleteProdButton;
+    @FXML private Button partSearchBtn;
+    @FXML private Button prodSearchBtn;
 
     @FXML
     void OnActionExitMain(ActionEvent event) {
@@ -127,6 +129,16 @@ public class MainFormController implements Initializable {
             stage.setScene(new Scene(scene));
             stage.show();
         }
+
+    }
+
+    @FXML
+    void onActionPartSearch(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onActionProdSearch(ActionEvent event) {
 
     }
     public static Part getSelectedPart() {
