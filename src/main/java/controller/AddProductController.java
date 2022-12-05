@@ -217,17 +217,23 @@ public class AddProductController implements Initializable {
         ObservableList<Part> allParts = Inventory.getAllParts();
         ObservableList<Part> matchingParts = FXCollections.observableArrayList();
 
+        // If the search input is empty
+        if (searchInput.isEmpty()){
+            Alert alert = new Alert(Alert.AlertType.WARNING," ERROR: Please enter a search input.");
+            alert.showAndWait();
+        }
+
         for (Part part: allParts){
             if (String.valueOf(part.getId()).contains(searchInput) || String.valueOf(part.getName()).contains(searchInput)){
                 matchingParts.add(part);
             }
+            else {
+                Alert alert = new Alert(Alert.AlertType.WARNING, "No part found. Please try again");
+                alert.showAndWait();
+            }
         allPartTbl.setItems(matchingParts);
         }
-        // If the search input doesn't match anything in the inventory
-        if (matchingParts.isEmpty()){
-            Alert alert = new Alert(Alert.AlertType.WARNING," ERROR: No matching parts found. Try again");
-            alert.showAndWait();
-        }
+
     }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

@@ -211,18 +211,46 @@ public class MainFormController implements Initializable {
 
         for (Part part: allParts){
             if (String.valueOf(part.getId()).contains(searchInput) || String.valueOf(part.getName()).contains(searchInput)) {
-                ;matchingParts.add(part);
+                matchingParts.add(part);
+                allPartTbl.setItems(matchingParts);
             }
-        allPartTbl.setItems(matchingParts);
+            else if (matchingParts.isEmpty()){
+                Alert alert = new Alert(Alert.AlertType.WARNING, "No matching part found.");
+                alert.showAndWait();
+            }
         }
-        
+        // If the search input is empty
+        if (searchInput.isEmpty()){
+            Alert alert = new Alert(Alert.AlertType.WARNING," ERROR: Please enter a search input.");
+            alert.showAndWait();
+        }
+
     }
 
     @FXML
     void onActionProdSearch(ActionEvent event) {
         String searchInput = allProdSearchField.getText();
 
+        ObservableList<Product> allProducts = Inventory.getAllProducts();
+        ObservableList<Product> matchingProducts = FXCollections.observableArrayList();
+
+        for (Product product : allProducts){
+            if(String.valueOf(product.getId()).contains(searchInput) || String.valueOf(product.getName()).contains(searchInput)){
+                matchingProducts.add(product);
+                allProdTbl.setItems(matchingProducts);
+            }
+            else if (matchingProducts.isEmpty()) {
+                Alert alert = new Alert(Alert.AlertType.WARNING, "No matching product found.");
+                alert.showAndWait();
+            }
+        }
+        // If the search input is empty
+        if (searchInput.isEmpty()){
+            Alert alert = new Alert(Alert.AlertType.WARNING," ERROR: Please enter a search input.");
+            alert.showAndWait();
+        }
     }
+
     public static Part getSelectedPart() {
         return selectedPart;
     }
