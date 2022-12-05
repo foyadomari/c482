@@ -204,8 +204,10 @@ public class AddProductController implements Initializable {
     }
 
     /**
-     *
+     * When the search bar is used method
      * Searches the part inventory for a specific part
+     *
+     * RUNTIME ERROR: If the search input doesn't match anything in the inventory, a window will pop up
      * @param event when a user clicks on the search button
      */
     @FXML

@@ -1,5 +1,7 @@
 package controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -149,12 +151,14 @@ public class MainFormController implements Initializable {
     @FXML
     void onActionModPart(ActionEvent event) throws IOException {
         selectedPart = allPartTbl.getSelectionModel().getSelectedItem();
-
+        // Checks to see if a part is selected
         if (selectedPart == null) {
             Alert alert = new Alert(Alert.AlertType.WARNING, "No part selected.");
             alert.setTitle("Modify Error");
             alert.showAndWait();
-        } else {
+        }
+        // No error occurred, goes to Modify Part screen
+        else {
             stage = (Stage)((Button)event.getSource()).getScene().getWindow();
             scene = FXMLLoader.load(getClass().getResource("/view/ModifyPart.fxml"));
             stage.setScene(new Scene(scene));
@@ -174,28 +178,49 @@ public class MainFormController implements Initializable {
     @FXML
     void onActionModProd(ActionEvent event) throws IOException {
         selectedProduct = allProdTbl.getSelectionModel().getSelectedItem();
-
+        // Checks to see if a product is selected
         if(selectedProduct == null){
             Alert alert = new Alert(Alert.AlertType.WARNING, "ERROR: No product selected.");
             alert.setTitle("Warning Dialog");
             alert.showAndWait();
         }
+        // No error occurred, goes to Modify Product screen
         else {
             stage = (Stage)((Button)event.getSource()).getScene().getWindow();
             scene = FXMLLoader.load(getClass().getResource("/view/ModifyProduct.fxml"));
             stage.setScene(new Scene(scene));
             stage.show();
         }
-
     }
 
+    /**
+     * When the part search bar is used method
+     * Searches the inventory for the matching part
+     *
+     * RUNTIME ERROR: If the search bar has no input, a window will pop up
+     * RUNTIME ERROR: If there is no matching parts, a window will pop up
+     *
+     * @param event when a user clicks on the search button in the part panel
+     */
     @FXML
     void onActionPartSearch(ActionEvent event) {
+        String searchInput = allPartSearchField.getText();
 
+        ObservableList<Part> allParts = Inventory.getAllParts();
+        ObservableList<Part> matchingParts = FXCollections.observableArrayList();
+
+        for (Part part: allParts){
+            if (String.valueOf(part.getId()).contains(searchInput) || String.valueOf(part.getName()).contains(searchInput)) {
+                ;matchingParts.add(part);
+            }
+        allPartTbl.setItems(matchingParts);
+        }
+        
     }
 
     @FXML
     void onActionProdSearch(ActionEvent event) {
+        String searchInput = allProdSearchField.getText();
 
     }
     public static Part getSelectedPart() {
@@ -213,13 +238,14 @@ public class MainFormController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        // Populates the parts table with the part items in the inventory
         allPartTbl.setItems(getAllParts());
         allPartIdCol.setCellValueFactory(new PropertyValueFactory<>("id"));
         allPartInvLvlCol.setCellValueFactory(new PropertyValueFactory<>("stock"));
         allPartNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
         allPartPriceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
 
+        // Populates the product table with the product items in the inventory
         allProdTbl.setItems((Inventory.getAllProducts()));
         allProdIDCol.setCellValueFactory(new PropertyValueFactory<>("id"));
         allProdInvLvlCol.setCellValueFactory(new PropertyValueFactory<>("stock"));
