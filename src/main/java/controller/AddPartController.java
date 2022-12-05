@@ -59,7 +59,7 @@ public class AddPartController implements Initializable {
     @FXML private Label partPriceLbl;
 
     /**
-     * When the "Cancel" button is clicked method
+     * The "Cancel" button is clicked method
      *
      * Exits the Add Part Screen and takes you back to the Main Menu
      *
@@ -81,20 +81,30 @@ public class AddPartController implements Initializable {
     }
 
     /**
-     * 
-     * @param event
+     * The "In-House" radio button is selected method
+     *
+     * Sets the dynamic label to "Machine ID"
+     *
+     * @param event when a user selects the In-House radio button
      */
     @FXML
     void onActionInHouse(ActionEvent event) {
         partMachineIdOrCompanyNameLbl.setText("Machine ID");
     }
+    /**
+     * The "Outsourced" radio button is selected method
+     *
+     * Sets the dynamic label to "Company Name"
+     *
+     * @param event when a user selects the Outsourced radio button
+     */
     @FXML
     void onActionOutsourced(ActionEvent event) {
         partMachineIdOrCompanyNameLbl.setText("Company Name");
     }
 
     /**
-     * When the "Save" button is clicked method
+     * The "Save" button is clicked method
      *
      * Creates a new part with the information filled out on the form and adds it to the inventory
      *
@@ -158,7 +168,7 @@ public class AddPartController implements Initializable {
     }
 
     /**
-     * Method to select the In-House radio button by default
+     * Initializes the controller and selects the In-House radio button by default
      *
      * @param url
      * @param resourceBundle

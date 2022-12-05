@@ -16,6 +16,7 @@ import model.Product;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import static model.Inventory.getAllParts;
@@ -58,6 +59,7 @@ public class MainFormController implements Initializable {
 
     @FXML
     void OnActionExitMain(ActionEvent event) {
+
         System.exit(0);
     }
 
@@ -81,28 +83,76 @@ public class MainFormController implements Initializable {
 
     }
 
+    /**
+     * The part "Delete" button is clicked method
+     *
+     * Deletes the selected from the inventory
+     *
+     * RUNTIME ERROR: When no part is selected, a window pops up
+     *
+     * @param event when a user clicks on the delete button in the parts panel
+     */
     @FXML
     void onActionDeletePart(ActionEvent event) {
-
-        System.out.println("Delete Part Button clicked");
-
+        selectedPart = allPartTbl.getSelectionModel().getSelectedItem();
+        // Checks to see if a part is selected
+        if (selectedPart == null){
+            Alert alert = new Alert(Alert.AlertType.WARNING,"ERROR: No part selected.");
+            alert.showAndWait();
+        }
+        // Gets confirmation that the user wants to delete the part from the inventory
+        if (selectedPart != null){
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION,"Are you sure you want to delete this part?");
+            Optional<ButtonType> response = alert.showAndWait();
+            if (response.isPresent() && response.get() == ButtonType.OK) {
+                Inventory.deletePart(selectedPart);
+            }
+        }
     }
-
+    /**
+     * The product "Delete" button is clicked method
+     *
+     * Deletes the selected product from the inventory
+     *
+     * RUNTIME ERROR: When no part is selected, a window pops up
+     *
+     * @param event when a user clicks on the delete button in the product panel
+     */
     @FXML
     void onActionDeleteProd(ActionEvent event) {
-
-        System.out.println("Delete Product Button clicked");
-
+        selectedProduct = allProdTbl.getSelectionModel().getSelectedItem();
+        // Checks to see if a product is selected
+        if (selectedProduct == null){
+            Alert alert = new Alert(Alert.AlertType.WARNING,"ERROR: No part selected.");
+            alert.showAndWait();
+        }
+        // Gets confirmation that the user wants to delete a product from the inventory
+        if (selectedProduct != null){
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION,"Are you sure you want to delete this part?");
+            Optional<ButtonType> response = alert.showAndWait();
+            if (response.isPresent() && response.get() == ButtonType.OK) {
+                Inventory.deleteProduct(selectedProduct);
+            }
+        }
     }
 
+    /**
+     * When the parts panel "Modify" button is clicked method
+     *
+     * Opens the Modify Part screen with the selected part's information preloaded
+     *
+     * RUNTIME ERROR: If no part is selected, a window pops up
+     *
+     * @param event when the user clicks on the "Modify" button in the parts panel
+     * @throws IOException dismisses any IO exception that may occur
+     */
     @FXML
     void onActionModPart(ActionEvent event) throws IOException {
         selectedPart = allPartTbl.getSelectionModel().getSelectedItem();
 
         if (selectedPart == null) {
-            Alert alert = new Alert(Alert.AlertType.ERROR, "No part selected \n Try again");
+            Alert alert = new Alert(Alert.AlertType.WARNING, "No part selected.");
             alert.setTitle("Modify Error");
-            alert.setContentText("No part selected \nTry again");
             alert.showAndWait();
         } else {
             stage = (Stage)((Button)event.getSource()).getScene().getWindow();
@@ -110,17 +160,24 @@ public class MainFormController implements Initializable {
             stage.setScene(new Scene(scene));
             stage.show();
         }
-
     }
-
+    /**
+     * When the product panel "Modify" button is clicked method
+     *
+     * Opens the Modify Part screen with the selected product's information preloaded
+     *
+     * RUNTIME ERROR: If no product is selected, a window pops up
+     *
+     * @param event when the user clicks on the "Modify" button in the product panel
+     * @throws IOException dismisses any IO exception that may occur
+     */
     @FXML
     void onActionModProd(ActionEvent event) throws IOException {
         selectedProduct = allProdTbl.getSelectionModel().getSelectedItem();
 
         if(selectedProduct == null){
-            Alert alert = new Alert(Alert.AlertType.WARNING);
+            Alert alert = new Alert(Alert.AlertType.WARNING, "ERROR: No product selected.");
             alert.setTitle("Warning Dialog");
-            alert.setContentText("ERROR: No product selected \n Try again");
             alert.showAndWait();
         }
         else {
@@ -148,6 +205,12 @@ public class MainFormController implements Initializable {
         return selectedProduct;
     }
 
+    /**
+     * Initializes the controller and populates the part and product tables
+     *
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
@@ -162,7 +225,5 @@ public class MainFormController implements Initializable {
         allProdInvLvlCol.setCellValueFactory(new PropertyValueFactory<>("stock"));
         allProdNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
         allProdPriceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
-
     }
-
 }

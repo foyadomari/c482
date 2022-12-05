@@ -101,8 +101,16 @@ public class ModifyProductController implements Initializable {
     void onActionSave(ActionEvent event) {
 
     }
-
-    public void onActionDisplayMainMenu(ActionEvent event) throws IOException{
+    /**
+     * The "Cancel" button is clicked method
+     *
+     * Exits the Add Part Screen and takes you back to the Main Menu
+     *
+     * @param event when user clicks on the "Cancel" button
+     * @throws IOException dismisses any IO exceptions that may occur
+     */
+    @FXML
+    void onActionDisplayMainMenu(ActionEvent event) throws IOException{
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "You will lose your changes, are you sure you want to continue?");
         alert.setTitle("Confirm Cancellation?");
         Optional<ButtonType> result = alert.showAndWait();
@@ -114,16 +122,33 @@ public class ModifyProductController implements Initializable {
             stage.show();
         }
     }
+
+    /**
+     * Initializes the controller and populates the text fields, and tables with the selected product's information
+     *
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         selectedProduct = MainFormController.getSelectedProduct();
 
-        allPartsTbl.setItems(allPartsTbl.getItems());
+        // Sets the values of the text field for the selected product
+        prodIdTxt.setText(String.valueOf(selectedProduct.getId()));
+        prodInvTxt.setText(String.valueOf(selectedProduct.getStock()));
+        prodNameTxt.setText(selectedProduct.getName());
+        prodMinTxt.setText(String.valueOf(selectedProduct.getMin()));
+        prodMaxTxt.setText(String.valueOf(selectedProduct.getMax()));
+
+        // Sets the values of the top table
+        allPartsTbl.setItems(Inventory.getAllParts());
         allPartIdCol.setCellValueFactory(new PropertyValueFactory<>("id"));
         allPartInvLvlCol.setCellValueFactory(new PropertyValueFactory<>("stock"));
         allPartNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
         allPartPriceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
 
+        // Sets the values of the bottom table
+        associatedPartsTbl.setItems(selectedProduct.getAllAssociatedParts());
         associatedPartIdCol.setCellValueFactory(new PropertyValueFactory<>("id"));
         associatedPartInvLvlCol.setCellValueFactory(new PropertyValueFactory<>("stock"));
         associatedPartNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));

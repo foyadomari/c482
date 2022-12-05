@@ -80,20 +80,20 @@ public class AddProductController implements Initializable {
 
         // Checks to see if a part is selected
         if(selectedPart == null){
-        Alert alert = new Alert(Alert.AlertType.WARNING,"ERROR: No part selected was selected.");
-        alert.setTitle("Add Part Error");
-        alert.showAndWait();
+            Alert alert = new Alert(Alert.AlertType.WARNING,"ERROR: No part selected was selected.");
+            alert.setTitle("Add Part Error");
+            alert.showAndWait();
         }
         // Checks to see if the part is already added to the associated parts list
         else if (associatedPartsList.contains(selectedPart)) {
-        Alert alert = new Alert(Alert.AlertType.WARNING, "ERROR: This product is already associated with the selected part.");
-        alert.setTitle("Product Relation Error");
-        alert.showAndWait();
+            Alert alert = new Alert(Alert.AlertType.WARNING, "ERROR: This product is already associated with the selected part.");
+            alert.setTitle("Product Relation Error");
+            alert.showAndWait();
         }
         // No error occurred, adding the selected part to the associated parts list
         else{
-        associatedPartsList.add(selectedPart);
-        associatedPartTbl.setItems(associatedPartsList);
+            associatedPartsList.add(selectedPart);
+            associatedPartTbl.setItems(associatedPartsList);
         }
     }
     /**
@@ -183,7 +183,12 @@ public class AddProductController implements Initializable {
                 int max = Integer.parseInt(prodMaxTxt.getText());
                 double price = Double.parseDouble(prodPriceTxt.getText());
 
-                Inventory.addProduct(new Product(id, name, price,stock, min, max));
+                Product newProd = new Product(id, name, price,stock, min, max);
+                Inventory.addProduct(newProd);
+
+                for (Part pn: associatedPartsList){
+                    newProd.addAssociatedPart(pn);
+                }
                 // Navigates back to the Main screen
                 stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
                 scene = FXMLLoader.load(getClass().getResource("/view/MainForm.fxml"));

@@ -68,7 +68,7 @@
                                     </Label>
                                     <TextField fx:id="allPartSearchField" prefHeight="25.0" prefWidth="170.0" promptText="Search by Part ID or Name">
                                        <HBox.margin>
-                                          <Insets left="205.0" />
+                                          <Insets left="204.0" />
                                        </HBox.margin>
                                     </TextField>
                                     <Button fx:id="partSearchBtn" mnemonicParsing="false" onAction="#onActionPartSearch" text="Search" />
