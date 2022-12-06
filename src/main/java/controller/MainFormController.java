@@ -1,4 +1,8 @@
 package controller;
+/**
+ * Main Form Controller
+ * @author - Felice Oyadomari III
+ */
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -23,7 +27,9 @@ import java.util.ResourceBundle;
 
 import static model.Inventory.getAllParts;
 
-
+/**
+ * Controller for the main screen
+ */
 public class MainFormController implements Initializable {
     private static Part selectedPart;
     private static Product selectedProduct;
@@ -59,12 +65,27 @@ public class MainFormController implements Initializable {
     @FXML private Button partSearchBtn;
     @FXML private Button prodSearchBtn;
 
+    /**
+     * When the "Exit" button is clicked method
+     *
+     * Closes the window and exits the program
+     *
+     * @param event when the user clicks on the "Exit" button
+     */
     @FXML
     void OnActionExitMain(ActionEvent event) {
 
         System.exit(0);
     }
 
+    /**
+     * When the "Add" button on the parts panel is clicked method
+     *
+     * Opens the Add part form
+     *
+     * @param event when a user clicks on the "Add" button on the parts panel
+     * @throws IOException dismisses any IO exceptions that may occur
+     */
     @FXML
     void onActionAddPart(ActionEvent event) throws IOException {
 
@@ -75,6 +96,14 @@ public class MainFormController implements Initializable {
 
     }
 
+    /**
+     * When the "Add" button on the product panel is clicked method
+     *
+     * Opens the Add product form
+     *
+     * @param event when a user clicks on the "Add" button in the product panel
+     * @throws IOException dismisses any IO exceptions that may occur
+     */
     @FXML
     void onActionAddProd(ActionEvent event) throws IOException {
 
@@ -209,17 +238,19 @@ public class MainFormController implements Initializable {
         ObservableList<Part> allParts = Inventory.getAllParts();
         ObservableList<Part> matchingParts = FXCollections.observableArrayList();
 
+        // Searches for a matching part by ID and name
         for (Part part: allParts){
             if (String.valueOf(part.getId()).contains(searchInput) || String.valueOf(part.getName()).contains(searchInput)) {
                 matchingParts.add(part);
                 allPartTbl.setItems(matchingParts);
             }
+            // If there is no matching parts
             else if (matchingParts.isEmpty()){
                 Alert alert = new Alert(Alert.AlertType.WARNING, "No matching part found.");
                 alert.showAndWait();
             }
         }
-        // If the search input is empty
+        // Checks if the search input is empty
         if (searchInput.isEmpty()){
             Alert alert = new Alert(Alert.AlertType.WARNING," ERROR: Please enter a search input.");
             alert.showAndWait();
@@ -227,6 +258,16 @@ public class MainFormController implements Initializable {
 
     }
 
+    /**
+     * When the product search bar is used method
+     *
+     * Searches the inventory for the matching product
+     *
+     * RUNTIME ERROR: If the search bar has no input, a window will pop up
+     * RUNTIME ERROR: If there is no matching parts, a window will pop up
+     *
+     * @param event when a user clicks on the "Search" button in the product panel
+     */
     @FXML
     void onActionProdSearch(ActionEvent event) {
         String searchInput = allProdSearchField.getText();
@@ -244,16 +285,27 @@ public class MainFormController implements Initializable {
                 alert.showAndWait();
             }
         }
-        // If the search input is empty
+        // Checks if the search input is empty
         if (searchInput.isEmpty()){
             Alert alert = new Alert(Alert.AlertType.WARNING," ERROR: Please enter a search input.");
             alert.showAndWait();
         }
     }
 
+    /**
+     * Returns the selected part
+     *
+     * @return returns the selected part in the parts table
+     */
     public static Part getSelectedPart() {
         return selectedPart;
     }
+
+    /**
+     * Returns the selected product
+     *
+     * @return returns the selected product in the product table
+     */
     public static Product getSelectedProduct() {
         return selectedProduct;
     }

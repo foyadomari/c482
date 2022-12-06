@@ -38,11 +38,12 @@
                             <rowConstraints>
                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                             </rowConstraints>
                             <children>
-                                <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="20.0" GridPane.rowIndex="3">
+                                <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="20.0" GridPane.rowIndex="4">
                                     <children>
                                         <Label text="Min:" />
                                         <TextField fx:id="prodMinTxt" />
@@ -69,12 +70,22 @@
                                         <TextField fx:id="prodNameTxt" />
                                     </children>
                                 </HBox>
-                                <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="25.0" GridPane.rowIndex="2">
+                                <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="25.0" GridPane.rowIndex="3">
                                     <children>
                                         <Label text="Inv:" />
                                         <TextField fx:id="prodInvTxt" />
                                     </children>
                                 </HBox>
+                        <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="10.0" GridPane.rowIndex="2">
+                           <children>
+                              <Label text="Price" />
+                              <TextField fx:id="prodPriceTxt">
+                                 <HBox.margin>
+                                    <Insets left="9.0" />
+                                 </HBox.margin>
+                              </TextField>
+                           </children>
+                        </HBox>
                             </children>
                             <padding>
                                 <Insets bottom="10.0" left="10.0" />
@@ -104,7 +115,7 @@
                         </Button>
                             </children>
                         </HBox>
-                        <TableView fx:id="allPartsTbl" prefHeight="250.0" prefWidth="200.0">
+                        <TableView fx:id="allPartTbl" prefHeight="250.0" prefWidth="200.0">
                             <columns>
                                 <TableColumn fx:id="allPartIdCol" prefWidth="75.0" text="Part ID" />
                                 <TableColumn fx:id="allPartNameCol" prefWidth="165.66661834716797" text="Part Name" />
@@ -125,7 +136,7 @@
                                 </Button>
                             </children>
                         </HBox>
-                        <TableView fx:id="associatedPartsTbl" layoutX="10.0" layoutY="35.0" prefHeight="250.0" prefWidth="200.0">
+                        <TableView fx:id="associatedPartTbl" layoutX="10.0" layoutY="35.0" prefHeight="250.0" prefWidth="200.0">
                             <columns>
                                 <TableColumn fx:id="associatedPartIdCol" prefWidth="75.0" text="Part ID" />
                                 <TableColumn fx:id="associatedPartNameCol" prefWidth="165.66661834716797" text="Part Name" />

@@ -1,6 +1,7 @@
 package controller;
 
 /**
+ * Add Product Controller
  * @author Felice Oyadomari III
  */
 
@@ -117,6 +118,7 @@ public class AddProductController implements Initializable {
             stage.show();
         }
     }
+
     /**
      * When the "Remove Associated Parts" button is clicked method
      *
@@ -217,24 +219,31 @@ public class AddProductController implements Initializable {
         ObservableList<Part> allParts = Inventory.getAllParts();
         ObservableList<Part> matchingParts = FXCollections.observableArrayList();
 
-        // If the search input is empty
+        // Checks if the search input is empty
         if (searchInput.isEmpty()){
             Alert alert = new Alert(Alert.AlertType.WARNING," ERROR: Please enter a search input.");
             alert.showAndWait();
         }
-
+        // Searches for the part by ID and Name
         for (Part part: allParts){
-            if (String.valueOf(part.getId()).contains(searchInput) || String.valueOf(part.getName()).contains(searchInput)){
+            // Checks if the search input matches a part by ID or name
+            if (part.getName().contains(searchInput) || String.valueOf(part.getId()).contains(searchInput)){
                 matchingParts.add(part);
             }
+            // If no part is found
             else {
                 Alert alert = new Alert(Alert.AlertType.WARNING, "No part found. Please try again");
                 alert.showAndWait();
             }
         allPartTbl.setItems(matchingParts);
         }
-
     }
+
+    /**
+     * Initializes the controller and populates top table
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         allPartTbl.setItems(Inventory.getAllParts());

@@ -8,14 +8,11 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class Inventory {
     private static ObservableList<Part> allParts = FXCollections.observableArrayList();
     private static ObservableList<Product> allProducts = FXCollections.observableArrayList();
-    /**
-     * Creates new Part ID starting at 1000
-     */
+
+    // Creates new Part ID starting at 1000
     public static AtomicInteger getUniquePartId = new AtomicInteger(1000);
 
-    /**
-     * Creates new Product ID starting at 5000
-     */
+    // Creates new Prod ID starting at 5000
     public static AtomicInteger getUniqueProdId = new AtomicInteger(5000);
 
     /**
@@ -23,9 +20,11 @@ public class Inventory {
      * @param newPart
      */
     public static void addPart(Part newPart){
+
         allParts.add(newPart);
     }
     public static void addProduct(Product newProduct){
+
         allProducts.add(newProduct);
     }
     public static Part lookupPart(int partId){
@@ -63,6 +62,7 @@ public class Inventory {
         return productFound;
     }
     public static void updatePart(int index,Part selectedPart ){
+
         Inventory.getAllParts().set(index,selectedPart);
     }
     public static void updateProduct(int index, Product newProduct){

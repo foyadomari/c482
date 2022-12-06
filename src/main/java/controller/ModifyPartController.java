@@ -1,4 +1,8 @@
 package controller;
+/**
+ * Modify Part Controller
+ * @author Felice Oyadomari III
+ */
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,6 +22,9 @@ import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+/**
+ * Controller for the Modify Part screen
+ */
 public class ModifyPartController implements Initializable {
 
     Stage stage;
@@ -57,13 +64,29 @@ public class ModifyPartController implements Initializable {
 
     private static Part selectedPart;
 
+    /**
+     * When the "Outsource" radio button is selected method
+     *
+     * Changes the dynamic label to "Company Name"
+     *
+     * @param event when a user selects the "Outsourced" radio button
+     */
     @FXML
     void OnActionOutsource(ActionEvent event) {
+
         partMachineIdOrCompanyNameLbl.setText("Company Name");
     }
 
+    /**
+     * When the "In-House" radio button is selected method
+     *
+     * Changes the dynamic label to "Machine ID"
+     *
+     * @param event when a user selects the "In-House" radio button
+     */
     @FXML
     void onActionInHouse(ActionEvent event) {
+
         partMachineIdOrCompanyNameLbl.setText("Machine ID");
     }
 

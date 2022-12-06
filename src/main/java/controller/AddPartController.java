@@ -1,6 +1,7 @@
 package controller;
 
 /**
+ * Add Part Controller
  * @author Felice Oyadomari III
  */
 
@@ -22,7 +23,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 /**
- * Controller for the Add Part screen and
+ * Controller for the Add Part screen
  */
 public class AddPartController implements Initializable {
 
