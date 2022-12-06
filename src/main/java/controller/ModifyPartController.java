@@ -90,6 +90,14 @@ public class ModifyPartController implements Initializable {
         partMachineIdOrCompanyNameLbl.setText("Machine ID");
     }
 
+    /**
+     * When the "Save" button is clicked method
+     *
+     * Modifies the selected part with the information filled out on the form
+     *
+     * @param event when the user clicks on the "Save" button
+     * @throws IOException dismisses any IO exceptions that may occur
+     */
     @FXML
     void onActionSave(ActionEvent event) throws IOException {
         int machineId;
@@ -142,6 +150,7 @@ public class ModifyPartController implements Initializable {
             alert.showAndWait();
         }
     }
+
     /**
      * The "Cancel" button is clicked method
      *
@@ -163,6 +172,7 @@ public class ModifyPartController implements Initializable {
             stage.show();
         }
     }
+
     /**
      * Initializes the controller and populates the top table with the parts from the inventory
      *

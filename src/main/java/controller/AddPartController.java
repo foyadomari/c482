@@ -90,6 +90,7 @@ public class AddPartController implements Initializable {
      */
     @FXML
     void onActionInHouse(ActionEvent event) {
+
         partMachineIdOrCompanyNameLbl.setText("Machine ID");
     }
     /**
@@ -101,6 +102,7 @@ public class AddPartController implements Initializable {
      */
     @FXML
     void onActionOutsourced(ActionEvent event) {
+
         partMachineIdOrCompanyNameLbl.setText("Company Name");
     }
 

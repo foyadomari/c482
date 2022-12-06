@@ -97,6 +97,7 @@ public class AddProductController implements Initializable {
             associatedPartTbl.setItems(associatedPartsList);
         }
     }
+
     /**
      * When the "Cancel" button is clicked method
      *
@@ -210,6 +211,7 @@ public class AddProductController implements Initializable {
      * Searches the part inventory for a specific part
      *
      * RUNTIME ERROR: If the search input doesn't match anything in the inventory, a window will pop up
+     * RUNTIME ERROR: If the search input is empty when the "Search" button is clicked, a window will pop up
      * @param event when a user clicks on the search button
      */
     @FXML

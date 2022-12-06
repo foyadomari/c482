@@ -140,6 +140,7 @@ public class MainFormController implements Initializable {
             }
         }
     }
+
     /**
      * The product "Delete" button is clicked method
      *
@@ -194,6 +195,7 @@ public class MainFormController implements Initializable {
             stage.show();
         }
     }
+
     /**
      * When the product panel "Modify" button is clicked method
      *
@@ -255,7 +257,6 @@ public class MainFormController implements Initializable {
             Alert alert = new Alert(Alert.AlertType.WARNING," ERROR: Please enter a search input.");
             alert.showAndWait();
         }
-
     }
 
     /**

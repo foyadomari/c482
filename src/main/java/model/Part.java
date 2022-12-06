@@ -4,7 +4,7 @@ package model;
  */
 
 /**
- *
+ * Base part class
  * @author Felice Oyadomari III
  */
 public abstract class Part {

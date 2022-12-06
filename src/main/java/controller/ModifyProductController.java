@@ -35,6 +35,8 @@ public class ModifyProductController implements Initializable {
     private static Product selectedProduct;
     private ObservableList<Part> associatedPartsList = FXCollections.observableArrayList();
 
+    private static int currentIndex;
+
     //FXML TextFields
     @FXML private TextField partsSearchTxt;
     @FXML private TextField prodIdTxt;
@@ -99,8 +101,13 @@ public class ModifyProductController implements Initializable {
     }
 
     /**
+     * When the search bar is used method
      *
      * Searches the part inventory for a specific part
+     *
+     * RUNTIME ERROR: If the search input doesn't match anything in the inventory, a window will pop up
+     * RUNTIME ERROR: If the search input is empty when the "Search" button is clicked, a window will pop up
+     *
      * @param event when a user clicks on the search button
      */
     @FXML
@@ -110,6 +117,12 @@ public class ModifyProductController implements Initializable {
         ObservableList<Part> allParts = Inventory.getAllParts();
         ObservableList<Part> matchingParts = FXCollections.observableArrayList();
 
+        // Checks if the search input is empty
+        if (searchInput.isEmpty()){
+            Alert alert = new Alert(Alert.AlertType.WARNING," ERROR: Please enter a search input.");
+            alert.showAndWait();
+        }
+        // Searches for part by ID or name
         for (Part part: allParts){
             if (String.valueOf(part.getId()).contains(searchInput) || String.valueOf(part.getName()).contains(searchInput)){
                 matchingParts.add(part);
@@ -153,6 +166,8 @@ public class ModifyProductController implements Initializable {
     }
 
     /**
+     * When the "Save" button is clicked method
+     *
      * Modifies the selected product using the information filled out on the form
      *
      * RUNTIME ERROR: If the max is less than the min number, a pop-up window will appear
@@ -181,9 +196,8 @@ public class ModifyProductController implements Initializable {
                 alert.showAndWait();
             } else {
                 // No errors occurred, adding new product to inventory
-                Inventory.updateProduct(Product.getId(), selectedProduct);
 
-                /*int id = Product.getId;
+                int id = Product.getId();
                 String name = prodNameTxt.getText();
                 int stock = Integer.parseInt(prodInvTxt.getText());
                 int min = Integer.parseInt(prodMinTxt.getText());
@@ -192,10 +206,11 @@ public class ModifyProductController implements Initializable {
 
                 Product newProd = new Product(id, name, price,stock, min, max);
                 Inventory.addProduct(newProd);
+                Inventory.deleteProduct(selectedProduct);
 
                 for (Part pn: associatedPartsList){
                     newProd.addAssociatedPart(pn);
-                }*/
+                }
                 // Navigates back to the Main screen
                 stage = (Stage) ((Button) event.getSource()).getScene().getWindow();
                 scene = FXMLLoader.load(getClass().getResource("/view/MainForm.fxml"));
@@ -247,6 +262,7 @@ public class ModifyProductController implements Initializable {
         prodNameTxt.setText(selectedProduct.getName());
         prodMinTxt.setText(String.valueOf(selectedProduct.getMin()));
         prodMaxTxt.setText(String.valueOf(selectedProduct.getMax()));
+        prodPriceTxt.setText(String.valueOf(selectedProduct.getPrice()));
 
         // Sets the values of the top table
         allPartTbl.setItems(Inventory.getAllParts());
@@ -261,7 +277,5 @@ public class ModifyProductController implements Initializable {
         associatedPartInvLvlCol.setCellValueFactory(new PropertyValueFactory<>("stock"));
         associatedPartNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
         associatedPartPriceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
-
     }
-
 }
