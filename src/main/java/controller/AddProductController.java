@@ -22,6 +22,8 @@ import model.Product;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.InputMismatchException;
+import java.util.MissingResourceException;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -94,7 +96,7 @@ public class AddProductController implements Initializable {
         // No error occurred, adding the selected part to the associated parts list
         else{
             associatedPartsList.add(selectedPart);
-            associatedPartTbl.setItems(associatedPartsList);
+            //associatedPartTbl.getItems().add(selectedPart);
         }
     }
 
@@ -139,12 +141,12 @@ public class AddProductController implements Initializable {
             alert.showAndWait();
         }
         // Gets confirmation that the user wants to delete the selected part from the associated part list
-        if (associatedPartsList.contains(selectedPart)) {
+        if (selectedPart != null) {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to delete this part?");
             Optional<ButtonType> response = alert.showAndWait();
             if (response.isPresent() && response.get() == ButtonType.OK) {
                 associatedPartsList.remove(selectedPart);
-                associatedPartTbl.setItems(associatedPartsList);
+                associatedPartTbl.getItems().remove(selectedPart);
             }
         }
     }
@@ -161,7 +163,19 @@ public class AddProductController implements Initializable {
     @FXML
     void onActionSave(ActionEvent event) throws IOException{
 
+        /*try{
+            int stock = Integer.parseInt(prodInvTxt.getText());
+            int min = Integer.parseInt(prodMinTxt.getText());
+            int max = Integer.parseInt(prodMaxTxt.getText());
+            double price = Double.parseDouble(prodPriceTxt.getText());
+        }
+        catch (NumberFormatException e){
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Incorrect format. Only numbers are allowed in inv, min, max, and price fields.");
+            alert.showAndWait();
+        }*/
+
         try{
+
             // Checks to see if the Max number is greater than the Min number
             if (Integer.parseInt(prodMinTxt.getText()) > Integer.parseInt(prodMaxTxt.getText())) {
                 Alert alert = new Alert(Alert.AlertType.ERROR,"ERROR: Max must be greater than Min");
@@ -179,7 +193,7 @@ public class AddProductController implements Initializable {
             }
             else {
                 // No errors occurred, adding new product to inventory
-                int id = Inventory.getUniqueProdId.getAndIncrement();
+                int id = Inventory.getUniqueProdId.incrementAndGet();
                 String name = prodNameTxt.getText();
                 int stock = Integer.parseInt(prodInvTxt.getText());
                 int min = Integer.parseInt(prodMinTxt.getText());
@@ -199,9 +213,9 @@ public class AddProductController implements Initializable {
                 stage.show();
             }
         }
-        // Generic error
+       // Ensures that numbers are used in Inv, Min, Max, and Price fields
         catch (NumberFormatException e){
-            Alert alert = new Alert(Alert.AlertType.WARNING,"ERROR: Please input valid values for each field");
+            Alert alert = new Alert(Alert.AlertType.WARNING,"ERROR: Incorrect format. Only numbers are allowed in the inv, min, max, and price fields.");
             alert.showAndWait();
         }
     }
@@ -232,12 +246,14 @@ public class AddProductController implements Initializable {
             if (part.getName().contains(searchInput) || String.valueOf(part.getId()).contains(searchInput)){
                 matchingParts.add(part);
             }
-            // If no part is found
-            else {
-                Alert alert = new Alert(Alert.AlertType.WARNING, "No part found. Please try again");
-                alert.showAndWait();
-            }
         allPartTbl.setItems(matchingParts);
+        }
+        // If no part is found
+        if (matchingParts.isEmpty()){
+            Alert alert = new Alert(Alert.AlertType.WARNING, "No part found. Please try again");
+            alert.showAndWait();
+            partSearchTxt.clear();
+            allPartTbl.setItems(allParts);
         }
     }
 
@@ -259,5 +275,7 @@ public class AddProductController implements Initializable {
         associatedPartInvLvlCol.setCellValueFactory(new PropertyValueFactory<>("stock"));
         associatedPartNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
         associatedPartPriceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
+
+        associatedPartTbl.refresh();
     }
 }

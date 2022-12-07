@@ -141,7 +141,7 @@ public class AddPartController implements Initializable {
             }
             else {
                 // No errors occurred, adding the new part to the inventory
-                int id = Inventory.getUniquePartId.getAndIncrement();
+                int id = Inventory.getUniquePartId.incrementAndGet();
                 String name = partNameTxt.getText();
                 double price = Double.parseDouble(partPriceTxt.getText());
                 int stock = Integer.parseInt(partInvTxt.getText());

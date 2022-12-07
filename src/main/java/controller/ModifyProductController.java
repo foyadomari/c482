@@ -129,10 +129,12 @@ public class ModifyProductController implements Initializable {
             }
             allPartTbl.setItems(matchingParts);
         }
-        // If the search input doesn't match anything in the inventory
+        // If no part is found
         if (matchingParts.isEmpty()){
-            Alert alert = new Alert(Alert.AlertType.WARNING," ERROR: No matching parts found. Try again");
+            Alert alert = new Alert(Alert.AlertType.WARNING, "No part found. Please try again");
             alert.showAndWait();
+            partsSearchTxt.clear();
+            allPartTbl.setItems(allParts);
         }
     }
 
@@ -155,12 +157,13 @@ public class ModifyProductController implements Initializable {
             alert.showAndWait();
         }
         // Gets confirmation that the user wants to delete the selected part from the associated part list
-        if (associatedPartsList.contains(selectedPart)) {
+        if (selectedPart != null) {
             Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to delete this part?");
             Optional<ButtonType> response = alert.showAndWait();
             if (response.isPresent() && response.get() == ButtonType.OK) {
+                associatedPartTbl.getItems().remove(selectedPart);
                 associatedPartsList.remove(selectedPart);
-                associatedPartTbl.setItems(associatedPartsList);
+
             }
         }
     }
@@ -277,5 +280,7 @@ public class ModifyProductController implements Initializable {
         associatedPartInvLvlCol.setCellValueFactory(new PropertyValueFactory<>("stock"));
         associatedPartNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
         associatedPartPriceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
+
+        associatedPartTbl.refresh();
     }
 }

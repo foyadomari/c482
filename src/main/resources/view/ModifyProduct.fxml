@@ -58,7 +58,7 @@
                                 <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="30.0">
                                     <children>
                                         <Label text="ID:" />
-                                        <TextField fx:id="prodIdTxt" disable="true" promptText="Auto-Generated" />
+                                        <TextField fx:id="prodIdTxt" disable="true" />
                                     </children>
                                     <GridPane.margin>
                                         <Insets />

@@ -126,6 +126,7 @@ public class MainFormController implements Initializable {
     @FXML
     void onActionDeletePart(ActionEvent event) {
         selectedPart = allPartTbl.getSelectionModel().getSelectedItem();
+
         // Checks to see if a part is selected
         if (selectedPart == null){
             Alert alert = new Alert(Alert.AlertType.WARNING,"ERROR: No part selected.");
@@ -153,18 +154,24 @@ public class MainFormController implements Initializable {
     @FXML
     void onActionDeleteProd(ActionEvent event) {
         selectedProduct = allProdTbl.getSelectionModel().getSelectedItem();
+
         // Checks to see if a product is selected
-        if (selectedProduct == null){
-            Alert alert = new Alert(Alert.AlertType.WARNING,"ERROR: No part selected.");
-            alert.showAndWait();
-        }
-        // Gets confirmation that the user wants to delete a product from the inventory
-        if (selectedProduct != null){
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION,"Are you sure you want to delete this part?");
-            Optional<ButtonType> response = alert.showAndWait();
-            if (response.isPresent() && response.get() == ButtonType.OK) {
-                Inventory.deleteProduct(selectedProduct);
+        try{
+            if (selectedProduct.getAllAssociatedParts().size() == 0){
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION,"This will delete this product. Are you sure?");
+                Optional<ButtonType> response = alert.showAndWait();
+                if (response.isPresent() && response.get() == ButtonType.OK) {
+                    Inventory.deleteProduct(selectedProduct);
+                }
             }
+            else if (selectedProduct.getAllAssociatedParts().size() > 0) {
+                Alert alert = new Alert(Alert.AlertType.WARNING, "This product cannot be delete because it has associated part(s). Delete the associated part(s) first.");
+                alert.showAndWait();
+            }
+        }
+        catch (NullPointerException e){
+            Alert alert = new Alert(Alert.AlertType.WARNING, "No product selected.");
+            alert.showAndWait();
         }
     }
 
@@ -332,5 +339,8 @@ public class MainFormController implements Initializable {
         allProdInvLvlCol.setCellValueFactory(new PropertyValueFactory<>("stock"));
         allProdNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
         allProdPriceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
+
+        allPartTbl.refresh();
+        allProdTbl.refresh();
     }
 }
