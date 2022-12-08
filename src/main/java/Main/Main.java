@@ -16,11 +16,15 @@ import java.io.IOException;
  *
  * <p><b>FUTURE ENHANCEMENTS:</p></b>
  * <p>
- *     Store the inventory data in a database to allow the persistence of the information after the application is closed
+ *     Store the inventory data in a database to allow the persistant information after the application is closed
  *     <br><br>
  *     Allow copying or templating of products and/or parts. This should speed up the creation of new parts/products that are similiar to a part/product that's already in the inventory
  *     <br><br>
- *     The highlighting of the text fields that are filled out incorrectly.
+ *     The highlighting of the text fields that are filled out incorrectly will allow you to troubleshoot the data input errors that may occur.
+ *     <br><br>
+ *     Make use of all the methods created. I tried to use them for the most part but the program still achieves the desired functionality.
+ *     <br><br>
+ *     Allow inputting the part amount that is needed for each product. This will allow for a more accurate inventory level tracking.
  * </p>
  *
  */
