@@ -80,6 +80,7 @@ public class ModifyProductController implements Initializable {
     @FXML
     void onActionAddPart(ActionEvent event) {
         Part selectedPart = allPartTbl.getSelectionModel().getSelectedItem();
+        associatedPartsList = selectedProduct.getAllAssociatedParts();
 
         // Checks to see if a part is selected
         if(selectedPart == null){
@@ -95,8 +96,8 @@ public class ModifyProductController implements Initializable {
         }
         // No error occurred, adding the selected part to the associated parts list
         else{
-            associatedPartsList.add(selectedPart);
-            associatedPartTbl.setItems(associatedPartsList);
+            selectedProduct.addAssociatedPart(selectedPart);
+            associatedPartTbl.setItems(selectedProduct.getAllAssociatedParts());
         }
     }
 
@@ -112,7 +113,7 @@ public class ModifyProductController implements Initializable {
      */
     @FXML
     void onActionPartSearch(ActionEvent event) {
-        String searchInput = partsSearchTxt.getText();
+        String searchInput = partsSearchTxt.getText().toLowerCase();
 
         ObservableList<Part> allParts = Inventory.getAllParts();
         ObservableList<Part> matchingParts = FXCollections.observableArrayList();
@@ -124,17 +125,17 @@ public class ModifyProductController implements Initializable {
         }
         // Searches for part by ID or name
         for (Part part: allParts){
-            if (String.valueOf(part.getId()).contains(searchInput) || String.valueOf(part.getName()).contains(searchInput)){
+            if (String.valueOf(part.getId()).contains(searchInput) || part.getName().toLowerCase().contains(searchInput)){
                 matchingParts.add(part);
+                allPartTbl.setItems(matchingParts);
             }
-            allPartTbl.setItems(matchingParts);
-        }
-        // If no part is found
-        if (matchingParts.isEmpty()){
-            Alert alert = new Alert(Alert.AlertType.WARNING, "No part found. Please try again");
-            alert.showAndWait();
-            partsSearchTxt.clear();
-            allPartTbl.setItems(allParts);
+            // If no part is found
+            else if (matchingParts.isEmpty()){
+                Alert alert = new Alert(Alert.AlertType.WARNING, "No part found. Please try again");
+                alert.showAndWait();
+                partsSearchTxt.clear();
+                allPartTbl.setItems(allParts);
+            }
         }
     }
 
@@ -176,6 +177,7 @@ public class ModifyProductController implements Initializable {
      * RUNTIME ERROR: If the max is less than the min number, a pop-up window will appear
      * RUNTIME ERROR: If the inventory level is not between the min and max numbers, a pop-up window will appear
      * RUNTIME ERROR: If the price is a negative number, a pop-up window will appear
+     * RUNTIME ERROR: If a non-numerical character is inputted into the min, max, inv, and price fields, a pop-up window will appear
      *
      * @param event when a user clicks on the "Save" button
      * @throws IOException dismisses any IO exceptions that may occur
@@ -197,7 +199,8 @@ public class ModifyProductController implements Initializable {
             else if (Double.parseDouble(prodPriceTxt.getText()) < 0.00) {
                 Alert alert = new Alert(Alert.AlertType.WARNING, "ERROR: Price must be greater than $0.00");
                 alert.showAndWait();
-            } else {
+            }
+            else {
                 // No errors occurred, adding new product to inventory
 
                 int id = Product.getId();
@@ -221,7 +224,7 @@ public class ModifyProductController implements Initializable {
                 stage.show();
             }
         }
-        // Generic error
+        // Ensures that numbers are used in Inv, Min, Max, and Price fields
         catch (NumberFormatException e) {
             Alert alert = new Alert(Alert.AlertType.WARNING, "ERROR: Please input valid values for each field");
             alert.showAndWait();

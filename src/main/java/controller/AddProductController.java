@@ -156,6 +156,7 @@ public class AddProductController implements Initializable {
      * RUNTIME ERROR: If the max is less than the min number, a pop-up window will appear
      * RUNTIME ERROR: If the inventory level is not between the min and max numbers, a pop-up window will appear
      * RUNTIME ERROR: If the price is a negative number, a pop-up window will appear
+     * RUNTIME ERROR: If a non-numerical character is inputted into the min, max, inv, and price fields, a pop-up window will appear
      *
      * @param event when a user clicks on the "Save" button
      * @throws IOException dismisses any IO exceptions that may occur
@@ -175,7 +176,6 @@ public class AddProductController implements Initializable {
         }*/
 
         try{
-
             // Checks to see if the Max number is greater than the Min number
             if (Integer.parseInt(prodMinTxt.getText()) > Integer.parseInt(prodMaxTxt.getText())) {
                 Alert alert = new Alert(Alert.AlertType.ERROR,"ERROR: Max must be greater than Min");
@@ -189,6 +189,10 @@ public class AddProductController implements Initializable {
             // Checks to see if the price is greater than $0.00
             else if(Double.parseDouble(prodPriceTxt.getText()) < 0.00) {
                 Alert alert = new Alert(Alert.AlertType.WARNING, "ERROR: Price must be greater than $0.00");
+                alert.showAndWait();
+            }
+            else if(prodInvTxt.getText().isEmpty() || prodPriceTxt.getText().isEmpty() || prodMaxTxt.getText().isEmpty() || prodMinTxt.getText().isEmpty() || prodNameTxt.getText().isEmpty()){
+                Alert alert = new Alert(Alert.AlertType.WARNING,"ERROR: All fields need to filled out.");
                 alert.showAndWait();
             }
             else {
@@ -215,7 +219,7 @@ public class AddProductController implements Initializable {
         }
        // Ensures that numbers are used in Inv, Min, Max, and Price fields
         catch (NumberFormatException e){
-            Alert alert = new Alert(Alert.AlertType.WARNING,"ERROR: Incorrect format. Only numbers are allowed in the inv, min, max, and price fields.");
+            Alert alert = new Alert(Alert.AlertType.WARNING,"ERROR: Please input valid values for each field");
             alert.showAndWait();
         }
     }
@@ -230,7 +234,7 @@ public class AddProductController implements Initializable {
      */
     @FXML
     void onActionSearch(ActionEvent event) {
-        String searchInput = partSearchTxt.getText();
+        String searchInput = partSearchTxt.getText().toLowerCase();
 
         ObservableList<Part> allParts = Inventory.getAllParts();
         ObservableList<Part> matchingParts = FXCollections.observableArrayList();
@@ -243,17 +247,17 @@ public class AddProductController implements Initializable {
         // Searches for the part by ID and Name
         for (Part part: allParts){
             // Checks if the search input matches a part by ID or name
-            if (part.getName().contains(searchInput) || String.valueOf(part.getId()).contains(searchInput)){
+            if (part.getName().toLowerCase().contains(searchInput) || String.valueOf(part.getId()).contains(searchInput)){
                 matchingParts.add(part);
+                allPartTbl.setItems(matchingParts);
             }
-        allPartTbl.setItems(matchingParts);
-        }
-        // If no part is found
-        if (matchingParts.isEmpty()){
-            Alert alert = new Alert(Alert.AlertType.WARNING, "No part found. Please try again");
-            alert.showAndWait();
-            partSearchTxt.clear();
-            allPartTbl.setItems(allParts);
+            // If no part is found
+            else if (matchingParts.isEmpty()){
+                Alert alert = new Alert(Alert.AlertType.WARNING, "No matching part found. Please try again");
+                alert.showAndWait();
+                partSearchTxt.clear();
+                allPartTbl.setItems(allParts);
+            }
         }
     }
 

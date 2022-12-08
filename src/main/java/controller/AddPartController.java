@@ -122,6 +122,7 @@ public class AddPartController implements Initializable {
     void onActionSave(ActionEvent event) throws IOException {
         int machineId;
         String companyName;
+
         try {
 
             // Checks to see if the Max number is greater than the Min number

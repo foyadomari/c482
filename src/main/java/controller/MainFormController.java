@@ -242,14 +242,14 @@ public class MainFormController implements Initializable {
      */
     @FXML
     void onActionPartSearch(ActionEvent event) {
-        String searchInput = allPartSearchField.getText();
+        String searchInput = allPartSearchField.getText().toLowerCase();
 
         ObservableList<Part> allParts = Inventory.getAllParts();
         ObservableList<Part> matchingParts = FXCollections.observableArrayList();
 
         // Searches for a matching part by ID and name
         for (Part part: allParts){
-            if (String.valueOf(part.getId()).contains(searchInput) || String.valueOf(part.getName()).contains(searchInput)) {
+            if (String.valueOf(part.getId()).contains(searchInput) || part.getName().toLowerCase().contains(searchInput)) {
                 matchingParts.add(part);
                 allPartTbl.setItems(matchingParts);
             }
@@ -257,6 +257,8 @@ public class MainFormController implements Initializable {
             else if (matchingParts.isEmpty()){
                 Alert alert = new Alert(Alert.AlertType.WARNING, "No matching part found.");
                 alert.showAndWait();
+                allPartSearchField.clear();
+                allPartTbl.setItems(allParts);
             }
         }
         // Checks if the search input is empty
@@ -278,19 +280,21 @@ public class MainFormController implements Initializable {
      */
     @FXML
     void onActionProdSearch(ActionEvent event) {
-        String searchInput = allProdSearchField.getText();
+        String searchInput = allProdSearchField.getText().toLowerCase();
 
         ObservableList<Product> allProducts = Inventory.getAllProducts();
         ObservableList<Product> matchingProducts = FXCollections.observableArrayList();
 
         for (Product product : allProducts){
-            if(String.valueOf(product.getId()).contains(searchInput) || String.valueOf(product.getName()).contains(searchInput)){
+            if(String.valueOf(product.getId()).contains(searchInput) || product.getName().toLowerCase().contains(searchInput)){
                 matchingProducts.add(product);
                 allProdTbl.setItems(matchingProducts);
             }
             else if (matchingProducts.isEmpty()) {
                 Alert alert = new Alert(Alert.AlertType.WARNING, "No matching product found.");
                 alert.showAndWait();
+                allProdSearchField.clear();
+                allProdTbl.setItems(allProducts);
             }
         }
         // Checks if the search input is empty
