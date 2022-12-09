@@ -25,7 +25,7 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-import static model.Inventory.getAllParts;
+import static model.Inventory.*;
 
 /**
  * Controller for the main screen
@@ -245,22 +245,27 @@ public class MainFormController implements Initializable {
         String searchInput = allPartSearchField.getText().toLowerCase();
 
         ObservableList<Part> allParts = Inventory.getAllParts();
-        ObservableList<Part> matchingParts = FXCollections.observableArrayList();
+        ObservableList<Part> matchingParts = Inventory.lookupPart(searchInput);
 
         // Searches for a matching part by ID and name
-        for (Part part: allParts){
-            if (String.valueOf(part.getId()).contains(searchInput) || part.getName().toLowerCase().contains(searchInput)) {
-                matchingParts.add(part);
-                allPartTbl.setItems(matchingParts);
+        if(matchingParts.size() == 0){
+            try{
+                int partId = Integer.parseInt(searchInput);
+                Part part = Inventory.lookupPart(partId);
+                if (part != null){
+                    matchingParts.add(part);
+                }
             }
             // If there is no matching parts
-            else if (matchingParts.isEmpty()){
-                Alert alert = new Alert(Alert.AlertType.WARNING, "No matching part found.");
+            catch(NumberFormatException e){
+                Alert alert = new Alert(Alert.AlertType.WARNING, "No matching part found. Please try again");
                 alert.showAndWait();
                 allPartSearchField.clear();
                 allPartTbl.setItems(allParts);
             }
         }
+        allPartTbl.setItems(matchingParts);
+
         // Checks if the search input is empty
         if (searchInput.isEmpty()){
             Alert alert = new Alert(Alert.AlertType.WARNING," ERROR: Please enter a search input.");
@@ -283,20 +288,24 @@ public class MainFormController implements Initializable {
         String searchInput = allProdSearchField.getText().toLowerCase();
 
         ObservableList<Product> allProducts = Inventory.getAllProducts();
-        ObservableList<Product> matchingProducts = FXCollections.observableArrayList();
+        ObservableList<Product> matchingProducts = Inventory.lookupProduct(searchInput);
 
-        for (Product product : allProducts){
-            if(String.valueOf(product.getId()).contains(searchInput) || product.getName().toLowerCase().contains(searchInput)){
-                matchingProducts.add(product);
-                allProdTbl.setItems(matchingProducts);
+        if(matchingProducts.size() == 0){
+            try{
+                int prodId = Integer.parseInt(searchInput);
+                Product product = Inventory.lookupProduct(prodId);
+                if (product != null){
+                    matchingProducts.add(product);
+                }
             }
-            else if (matchingProducts.isEmpty()) {
+            catch (NumberFormatException e){
                 Alert alert = new Alert(Alert.AlertType.WARNING, "No matching product found.");
                 alert.showAndWait();
                 allProdSearchField.clear();
                 allProdTbl.setItems(allProducts);
             }
         }
+        allProdTbl.setItems(matchingProducts);
         // Checks if the search input is empty
         if (searchInput.isEmpty()){
             Alert alert = new Alert(Alert.AlertType.WARNING," ERROR: Please enter a search input.");
@@ -344,7 +353,5 @@ public class MainFormController implements Initializable {
         allProdNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
         allProdPriceCol.setCellValueFactory(new PropertyValueFactory<>("price"));
 
-        allPartTbl.refresh();
-        allProdTbl.refresh();
     }
 }

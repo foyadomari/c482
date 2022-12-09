@@ -146,7 +146,7 @@ public class ModifyPartController implements Initializable {
                 stage.show();
             }
         } catch (NumberFormatException e) {
-            Alert alert = new Alert(Alert.AlertType.WARNING, "ERROR: Please input valid values for each field");
+            Alert alert = new Alert(Alert.AlertType.WARNING, "ERROR: Please input valid values for each field:\nName: String\nPrice: Number\nInv: Number(must be between Min and Max)\nMin: Number\nMax: Number");
             alert.showAndWait();
         }
     }

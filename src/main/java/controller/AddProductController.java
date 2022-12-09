@@ -198,6 +198,7 @@ public class AddProductController implements Initializable {
             else {
                 // No errors occurred, adding new product to inventory
                 int id = Inventory.getUniqueProdId.incrementAndGet();
+                System.out.println("ID is " + id);
                 String name = prodNameTxt.getText();
                 int stock = Integer.parseInt(prodInvTxt.getText());
                 int min = Integer.parseInt(prodMinTxt.getText());
@@ -219,7 +220,7 @@ public class AddProductController implements Initializable {
         }
        // Ensures that numbers are used in Inv, Min, Max, and Price fields
         catch (NumberFormatException e){
-            Alert alert = new Alert(Alert.AlertType.WARNING,"ERROR: Please input valid values for each field");
+            Alert alert = new Alert(Alert.AlertType.WARNING,"ERROR: Please input valid values for each field:\nName: String\nPrice: Number\nInv: Number (must be between Min and Max)\nMin: Number\nMax: Number");
             alert.showAndWait();
         }
     }
@@ -237,28 +238,31 @@ public class AddProductController implements Initializable {
         String searchInput = partSearchTxt.getText().toLowerCase();
 
         ObservableList<Part> allParts = Inventory.getAllParts();
-        ObservableList<Part> matchingParts = FXCollections.observableArrayList();
+        ObservableList<Part> matchingParts = Inventory.lookupPart(searchInput);
 
         // Checks if the search input is empty
         if (searchInput.isEmpty()){
             Alert alert = new Alert(Alert.AlertType.WARNING," ERROR: Please enter a search input.");
             alert.showAndWait();
         }
+
         // Searches for the part by ID and Name
-        for (Part part: allParts){
-            // Checks if the search input matches a part by ID or name
-            if (part.getName().toLowerCase().contains(searchInput) || String.valueOf(part.getId()).contains(searchInput)){
-                matchingParts.add(part);
-                allPartTbl.setItems(matchingParts);
+        if (matchingParts.size() == 0){
+            try{
+                int partId = Integer.parseInt(searchInput);
+                Part part = Inventory.lookupPart(partId);
+                if (part != null){
+                    matchingParts.add(part);
+                }
             }
-            // If no part is found
-            else if (matchingParts.isEmpty()){
+            catch(NumberFormatException e){
                 Alert alert = new Alert(Alert.AlertType.WARNING, "No matching part found. Please try again");
                 alert.showAndWait();
                 partSearchTxt.clear();
                 allPartTbl.setItems(allParts);
             }
         }
+        allPartTbl.setItems(matchingParts);
     }
 
     /**
